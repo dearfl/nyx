@@ -14,6 +14,7 @@ _: {
     ../../modules/hyprland.nix
     ../../modules/fonts.nix
     ../../modules/sound.nix
+    ../../modules/touchpad.nix
 
     ../../users/flr.nix
   ];
