@@ -10,6 +10,7 @@ _: {
     ../../modules/ssh.nix
     ../../modules/firewall.nix
     ../../modules/packages.nix
+    ../../modules/doas.nix
     ../../users/flr.nix
   ];
 

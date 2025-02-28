@@ -4,6 +4,7 @@ _: {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
       packages = [ ];
+      uid = 1000;
     };
   };
 }
