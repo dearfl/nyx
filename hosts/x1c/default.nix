@@ -12,6 +12,8 @@ _: {
     ../../modules/packages.nix
     ../../modules/doas.nix
     ../../modules/hyprland.nix
+    ../../modules/fonts.nix
+
     ../../users/flr.nix
   ];
 
