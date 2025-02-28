@@ -11,6 +11,7 @@ _: {
     ../../modules/firewall.nix
     ../../modules/packages.nix
     ../../modules/doas.nix
+    ../../modules/hyprland.nix
     ../../users/flr.nix
   ];
 
