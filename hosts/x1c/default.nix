@@ -13,6 +13,7 @@ _: {
     ../../modules/doas.nix
     ../../modules/hyprland.nix
     ../../modules/fonts.nix
+    ../../modules/sound.nix
 
     ../../users/flr.nix
   ];
