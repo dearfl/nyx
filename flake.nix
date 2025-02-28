@@ -24,7 +24,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.flr = import ./home/flr.nix;
+              home-manager.users.flr = import ./home/users/flr.nix;
             }
           ];
         };
