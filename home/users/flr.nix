@@ -5,6 +5,7 @@ _: {
     ../modules/hyprland.nix
     ../modules/helix.nix
     ../modules/fish.nix
+    ../modules/qutebrowser.nix
   ];
 
   config = {
