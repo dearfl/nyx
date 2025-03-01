@@ -4,6 +4,7 @@ _: {
     ../modules/alacritty.nix
     ../modules/hyprland.nix
     ../modules/helix.nix
+    ../modules/fish.nix
   ];
 
   config = {
