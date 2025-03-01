@@ -1,5 +1,8 @@
 _: {
   imports = [
+    # unmanaged packages
+    ../modules/packages.nix
+
     ../modules/git.nix
     ../modules/alacritty.nix
     ../modules/hyprland.nix
