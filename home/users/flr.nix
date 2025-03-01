@@ -3,6 +3,7 @@ _: {
     ../modules/git.nix
     ../modules/alacritty.nix
     ../modules/hyprland.nix
+    ../modules/helix.nix
   ];
 
   config = {
