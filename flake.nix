@@ -28,6 +28,21 @@
             }
           ];
         };
+
+        old = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/old
+
+            # home manager
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.flr = import ./home/users/flr.nix;
+            }
+          ];
+        };
       };
     };
 }
