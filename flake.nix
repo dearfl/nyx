@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vaultix = {
+      url = "github:milieuim/vaultix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,14 +24,28 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       { withSystem, ... }:
       {
+        imports = [
+          inputs.vaultix.flakeModules.default
+        ];
         flake = {
+          vaultix = {
+            # vaultix configs
+            nodes = self.nixosConfigurations;
+            identity = "./secrets/key.txt";
+          };
+
           nixosConfigurations = {
             # my main laptop x1 carbon 8th gen
-            x1c = withSystem "x86_64-linux" ({ system, ... }:
+            x1c = withSystem "x86_64-linux" (
+              { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
 
+                # vaultix need this
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   ./hosts/x1c
 
@@ -43,11 +61,16 @@
             );
 
             # my old laptop
-            old = withSystem "x86_64-linux" ({ system, ... }:
+            old = withSystem "x86_64-linux" (
+              { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
 
+                # vaultix need this
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   ./hosts/old
 
