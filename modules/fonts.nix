@@ -10,6 +10,9 @@
         # new way to add nerd fonts
         nerd-fonts.fira-code
         noto-fonts
+        noto-fonts-color-emoji
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
       ];
     };
   };
