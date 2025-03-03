@@ -20,6 +20,7 @@
       tokei
       wget
       yazi
+      yt-dlp
     ];
   };
 }
