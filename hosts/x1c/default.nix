@@ -6,15 +6,17 @@ _: {
     ../../modules/nix.nix
     ../../modules/systemd-boot.nix
     ../../modules/wifi.nix
-    ../../modules/git.nix
-    ../../modules/ssh.nix
     ../../modules/firewall.nix
-    ../../modules/packages.nix
-    ../../modules/doas.nix
-    ../../modules/hyprland.nix
     ../../modules/fonts.nix
+    ../../modules/doas.nix
     ../../modules/sound.nix
     ../../modules/touchpad.nix
+
+    ../../modules/packages.nix
+
+    ../../modules/git.nix
+    ../../modules/ssh.nix
+    ../../modules/hyprland.nix
 
     ../../users/flr.nix
   ];
