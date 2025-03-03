@@ -23,6 +23,7 @@
               kb_layout = "us";
               kb_variant = "norman";
               kb_options = "ctrl:swapcaps";
+              resolve_binds_by_sym = "1";
             };
 
             env = [
