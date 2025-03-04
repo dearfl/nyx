@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
   };
 
   outputs =
@@ -15,6 +16,7 @@
       flake-parts,
       nixpkgs,
       home-manager,
+      raspberry-pi-nix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -66,11 +68,35 @@
                 ];
               }
             );
+
+            # raspberry pi 4b
+            rpi = withSystem "aarch64-linux" (
+              { system, ... }:
+              with inputs.nixpkgs;
+              lib.nixosSystem {
+                inherit system;
+
+                modules = [
+                  ./hosts/rpi
+
+                  raspberry-pi-nix.nixosModules.raspberry-pi
+
+                  # home manager
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.flr = import ./home/users/rpi.nix;
+                  }
+                ];
+              }
+            );
           };
         };
 
         systems = [
           "x86_64-linux"
+          "aarch64-linux"
         ];
       }
     );
