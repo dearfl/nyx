@@ -17,7 +17,7 @@ _: {
 
     ../../modules/rpi.nix
 
-    ../../users/flr.nix
+    ../../users/rpi.nix
   ];
 
   networking.hostName = "rpi";
