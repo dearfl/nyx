@@ -15,6 +15,7 @@
       jq
       lsof
       ncdu
+      rage
       ripgrep
       tmux
       tokei
