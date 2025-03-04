@@ -26,6 +26,7 @@
       {
         imports = [
           inputs.vaultix.flakeModules.default
+          inputs.home-manager.flakeModules.default
         ];
         flake = {
           vaultix = {
