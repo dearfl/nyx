@@ -4,6 +4,7 @@ _: {
     ../modules/packages.nix
 
     ../modules/git.nix
+    ../modules/ssh.nix
     ../modules/helix.nix
     ../modules/fish.nix
 
