@@ -52,11 +52,13 @@
           in
           {
             content = builtins.toJSON {
-              inbounds = [{
-                listen = "0.0.0.0";
-                port = 1080;
-                protocol = "socks";
-              }];
+              inbounds = [
+                {
+                  listen = "0.0.0.0";
+                  port = 1080;
+                  protocol = "socks";
+                }
+              ];
               outbounds = map mkOutbound [
                 {
                   addr = config.vaultix.placeholder.v2ray-addr-hk;
