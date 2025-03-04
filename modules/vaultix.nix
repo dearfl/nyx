@@ -14,20 +14,11 @@
         v2ray-addr-hk = {
           file = ../secrets/v2ray-addr-hk.age;
         };
-        v2ray-port-hk = {
-          file = ../secrets/v2ray-port-hk.age;
-        };
         v2ray-addr-tw = {
           file = ../secrets/v2ray-addr-tw.age;
         };
-        v2ray-port-tw = {
-          file = ../secrets/v2ray-port-tw.age;
-        };
         v2ray-addr-sg = {
           file = ../secrets/v2ray-addr-sg.age;
-        };
-        v2ray-port-sg = {
-          file = ../secrets/v2ray-port-sg.age;
         };
       };
       templates = {
@@ -60,31 +51,31 @@
               };
           in
           {
-            mode = "644";
             content = builtins.toJSON {
               inbounds = [{
                 listen = "0.0.0.0";
                 port = 1080;
                 protocol = "socks";
               }];
-              outbound = map mkOutbound [
+              outbounds = map mkOutbound [
                 {
                   addr = config.vaultix.placeholder.v2ray-addr-hk;
-                  port = config.vaultix.placeholder.v2ray-port-hk;
+                  port = 50372;
                   uuid = config.vaultix.placeholder.v2ray-uuid;
                 }
                 {
                   addr = config.vaultix.placeholder.v2ray-addr-tw;
-                  port = config.vaultix.placeholder.v2ray-port-tw;
+                  port = 50370;
                   uuid = config.vaultix.placeholder.v2ray-uuid;
                 }
                 {
                   addr = config.vaultix.placeholder.v2ray-addr-sg;
-                  port = config.vaultix.placeholder.v2ray-port-sg;
+                  port = 51345;
                   uuid = config.vaultix.placeholder.v2ray-uuid;
                 }
               ];
             };
+            mode = "644";
           };
       };
     };
