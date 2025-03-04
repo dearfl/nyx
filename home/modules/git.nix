@@ -9,10 +9,11 @@ _: {
           defaultBranch = "main";
         };
         url = {
-          "https://github.com/" = {
+          "git@github.com:" = {
             insteadOf = [
               "gh:"
               "github:"
+              "https://github.com"
             ];
           };
         };
