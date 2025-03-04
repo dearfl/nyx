@@ -20,10 +20,14 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       { withSystem, ... }:
       {
+        imports = [
+          inputs.home-manager.flakeModules.default
+        ];
         flake = {
           nixosConfigurations = {
             # my main laptop x1 carbon 8th gen
-            x1c = withSystem "x86_64-linux" ({ system, ... }:
+            x1c = withSystem "x86_64-linux" (
+              { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
@@ -43,7 +47,8 @@
             );
 
             # my old laptop
-            old = withSystem "x86_64-linux" ({ system, ... }:
+            old = withSystem "x86_64-linux" (
+              { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
