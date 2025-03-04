@@ -4,10 +4,11 @@ _: {
     ../modules/packages.nix
 
     ../modules/git.nix
-    ../modules/alacritty.nix
-    ../modules/hyprland.nix
     ../modules/helix.nix
     ../modules/fish.nix
+
+    ../modules/alacritty.nix
+    ../modules/hyprland.nix
     ../modules/qutebrowser.nix
   ];
 
