@@ -63,6 +63,31 @@
               }
             );
 
+            # my main laptop x1 carbon 8th gen
+            desktop = withSystem "x86_64-linux" (
+              { system, ... }:
+              with inputs.nixpkgs;
+              lib.nixosSystem {
+                inherit system;
+
+                # vaultix need this
+                specialArgs = {
+                  inherit inputs;
+                };
+                modules = [
+                  ./hosts/desktop
+
+                  # home manager
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.flr = import ./home/users/desktop.nix;
+                  }
+                ];
+              }
+            );
+
             # my old laptop
             old = withSystem "x86_64-linux" (
               { system, ... }:
