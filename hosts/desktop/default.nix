@@ -15,6 +15,11 @@ _: {
 
     ../../modules/static-web-server.nix
 
+    ../../modules/vaultix.nix
+    ./vaultix.nix
+
+    ../../modules/v2ray.nix
+
     ../../users/flr.nix
   ];
 
