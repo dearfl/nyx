@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 {
   config = {
     wayland = {
@@ -123,6 +123,7 @@
 
               # TODO: workspaces
               # this is not working right now, pinging might be able to help
+              # update this when yambar-hyprland-wses updates
               # {
               #   script = {
               #     path = "${pkgs.yambar-hyprland-wses}/bin/yambar-hyprland-wses";
@@ -175,96 +176,59 @@
               }
             ];
 
-            right =
-              let
-                mkNetworkBar = name: {
-                  network = {
-                    poll-interval = 5000;
-                    content.map = {
-                      default = {
-                        empty = { };
+            right = [
+              {
+                network = {
+                  poll-interval = 5000;
+                  content.map = {
+                    default = {
+                      empty = { };
+                    };
+                    conditions = {
+                      "state == down" = {
+                        string = {
+                          text = "";
+                          foreground = "ff0000ff";
+                        };
                       };
-                      conditions."name == ${name}".map = {
-                        default = {
-                          string = {
-                            text = "<${name}>";
-                            foreground = "ffffff66";
-                          };
-                        };
-                        conditions = {
-                          "state == down" = {
-                            string = {
-                              text = "";
-                              foreground = "ff0000ff";
+                      "state == up".map = {
+                        deco = mkDeco "9f78e1ff";
+                        conditions =
+                          let
+                            mkSymbol = symbol: {
+                              string = {
+                                text = "${symbol} {ssid}";
+                              };
                             };
+                          in
+                          {
+                            "signal >= -50" = mkSymbol "🌣";
+                            "signal >= -55" = mkSymbol "🌤";
+                            "signal >= -67" = mkSymbol "🌥";
+                            "signal >= -70" = mkSymbol "🌦";
+                            "signal >= -80" = mkSymbol "🌧";
                           };
-                          "state == up".map = {
-                            deco = mkDeco "9f78e1ff";
-                            conditions =
-                              let
-                                mkSignalRule =
-                                  { strength, symbol }:
-                                  {
-                                    name = "signal >= -${builtins.toString strength}";
-                                    value = [
-                                      {
-                                        string = {
-                                          text = "${symbol} {ssid}";
-                                        };
-                                      }
-                                    ];
-                                  };
-                              in
-                              builtins.listToAttrs (
-                                map mkSignalRule [
-                                  {
-                                    strength = 50;
-                                    symbol = "🌣";
-                                  }
-                                  {
-                                    strength = 55;
-                                    symbol = "🌤";
-                                  }
-                                  {
-                                    strength = 67;
-                                    symbol = "🌥";
-                                  }
-                                  {
-                                    strength = 70;
-                                    symbol = "🌦";
-                                  }
-                                  {
-                                    strength = 80;
-                                    symbol = "🌧";
-                                  }
-                                ]
-                              );
-                          };
-                        };
                       };
                     };
                   };
                 };
-              in
-              builtins.map mkNetworkBar (
-                builtins.filter (name: name != "lo") (builtins.attrNames osConfig.networking.interfaces)
-              )
-              ++ [
-                # cpu usage
-                {
-                  cpu = {
-                    poll-interval = 2000;
-                    content.map.conditions."id < 0" = [
-                      {
-                        string = {
-                          text = "💻 {cpu}%";
-                          deco = mkDeco "f90000ff";
-                        };
-                      }
-                    ];
-                  };
-                }
-              ];
+              }
+
+              # cpu usage
+              {
+                cpu = {
+                  poll-interval = 2000;
+                  content.map.conditions."id < 0" = [
+                    {
+                      string = {
+                        text = "💻 {cpu}%";
+                        deco = mkDeco "f90000ff";
+                      };
+                    }
+                  ];
+                };
+              }
+            ];
           };
         };
       };
