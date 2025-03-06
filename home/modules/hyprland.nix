@@ -97,10 +97,10 @@
                 builtins.concatLists (builtins.genList mkWorkspaceRule 9)
               );
 
-              windowrulev2 = [
-                "suppressevent maximize, class:.*"
-                "float, class:bevy, title: bevy"
-              ];
+            windowrulev2 = [
+              "suppressevent maximize, class:.*"
+              "float, class:bevy, title: bevy"
+            ];
           };
         };
       };
@@ -117,7 +117,7 @@
             {
               underline = {
                 inherit color;
-                size = 2;
+                size = 3;
               };
             }
           ];
@@ -144,7 +144,7 @@
                     {
                       string = {
                         text = "{date} {time}";
-                        deco = mkDeco "0a6cf5ff";
+                        deco = mkDeco "458588ff";
                       };
                     }
                   ];
@@ -193,7 +193,7 @@
                     {
                       string = {
                         text = "{app-id}";
-                        foreground = "fba922ff";
+                        foreground = "d65d0eff";
                       };
                     }
                     {
@@ -222,7 +222,7 @@
                         };
                       };
                       "state == up".map = {
-                        deco = mkDeco "9f78e1ff";
+                        deco = mkDeco "8f3f71ff";
                         conditions =
                           let
                             mkSymbol = symbol: {
@@ -252,12 +252,42 @@
                     {
                       string = {
                         text = "💻 {cpu}%";
-                        deco = mkDeco "f90000ff";
+                        deco = mkDeco "689d6aff";
                       };
                     }
                   ];
                 };
               }
+
+              # battery
+              {
+                mem = {
+                  content = [
+                    {
+                      string = {
+                        text = " {percent_used}%";
+                        deco = mkDeco "b16286ff";
+                      };
+                    }
+                  ];
+                };
+              }
+
+              # battery
+              {
+                battery = {
+                  name = "BAT0";
+                  content = [
+                    {
+                      string = {
+                        text = "  {capacity}%";
+                        deco = mkDeco "98971aff";
+                      };
+                    }
+                  ];
+                };
+              }
+
             ];
           };
         };
