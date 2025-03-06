@@ -11,6 +11,7 @@ _: {
     ../modules/alacritty.nix
     ../modules/hyprland.nix
     ../modules/qutebrowser.nix
+    ../modules/dunst.nix
   ];
 
   config = {
