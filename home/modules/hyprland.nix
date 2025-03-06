@@ -62,7 +62,7 @@
             bind =
               [
                 "$mod, Return, exec, $terminal"
-                # "$mod, S, exec, ${pkgs.flameshot}/bin/flameshot gui"
+                "$mod, S, exec, ${pkgs.slurp} | ${pkgs.grim} -g -"
                 "$mod, P, exec, $menu"
                 "$mod, Q, killactive"
                 "$mod, Space, togglefloating"
