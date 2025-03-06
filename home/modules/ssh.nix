@@ -18,6 +18,7 @@ _: {
         "router" = {
           hostname = "192.168.8.1";
           user = "root";
+          # router need extra settings
           extraOptions = {
             hostKeyAlgorithms = "ssh-rsa";
             fingerprintHash = "md5";
@@ -25,6 +26,16 @@ _: {
         };
         "rpi" = {
           hostname = "192.168.8.114";
+          user = "flr";
+          # identityFile = "/home/flr/.ssh/id_rsa";
+        };
+        "desktop" = {
+          hostname = "192.168.8.241";
+          user = "flr";
+          # identityFile = "/home/flr/.ssh/id_rsa";
+        };
+        "old" = {
+          hostname = "192.168.8.205";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
