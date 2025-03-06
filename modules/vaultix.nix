@@ -20,6 +20,9 @@
         v2ray-addr-sg = {
           file = ../secrets/v2ray-addr-sg.age;
         };
+        v2ray-addr-us = {
+          file = ../secrets/v2ray-addr-us.age;
+        };
       };
       templates = {
         v2ray =
@@ -60,6 +63,11 @@
                 }
               ];
               outbounds = map mkOutbound [
+                {
+                  addr = config.vaultix.placeholder.v2ray-addr-us;
+                  port = 52359;
+                  uuid = config.vaultix.placeholder.v2ray-uuid;
+                }
                 {
                   addr = config.vaultix.placeholder.v2ray-addr-hk;
                   port = 50372;
