@@ -5,10 +5,12 @@
       pkgs.blender
       # pkgs.kicad
       pkgs.mupdf
-      pkgs.sxiv
       pkgs.scrot
       pkgs.telegram-desktop
       pkgs.vial
+      pkgs.slurp
+      pkgs.grim
+      pkgs.imv
     ];
 
     programs = {
