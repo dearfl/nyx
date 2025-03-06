@@ -39,18 +39,43 @@
             };
 
             decoration = {
-              rounding = 6;
+              rounding = 4;
+              inactive_opacity = 0.8;
+              active_opacity = 0.92;
+            };
+
+            master = {
+              mfact = 0.45;
+              new_status = "master";
+              orientation = "right";
             };
 
             animations = {
+              enabled = true;
+            };
+
+            # let turn off xwayland support for a try
+            xwayland = {
               enabled = false;
             };
 
             bind =
               [
                 "$mod, Return, exec, $terminal"
-                "$mod, Q, killactive"
+                # "$mod, S, exec, ${pkgs.flameshot}/bin/flameshot gui"
                 "$mod, P, exec, $menu"
+                "$mod, Q, killactive"
+                "$mod, Space, togglefloating"
+                "$mod, F, fullscreen"
+                "$mod, K, layoutmsg, cycleprev"
+                "$mod, J, layoutmsg, cyclenext"
+                "$mod, G, layoutmsg, swapprev"
+                "$mod, Y, layoutmsg, swapnext"
+                "$mod, A, layoutmsg, swapwithmaster"
+                "$mod, R, layoutmsg, orientationright"
+                # not working
+                "$mod, H, layoutmsg, mfact, -0.2"
+                "$mod, L, layoutmsg, mfact, +0.2"
                 "$mod SHIFT, Q, exit"
                 "$mod, M, togglespecialworkspace, magic"
                 "$mod SHIFT, M, movetoworkspace, special:magic"
@@ -71,6 +96,11 @@
                 in
                 builtins.concatLists (builtins.genList mkWorkspaceRule 9)
               );
+
+              windowrulev2 = [
+                "suppressevent maximize, class:.*"
+                "float, class:bevy, title: bevy"
+              ];
           };
         };
       };
