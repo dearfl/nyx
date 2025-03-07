@@ -27,7 +27,7 @@ _: {
     ../../users/flr.nix
   ];
 
-  networking.hostName = "x1c";
+  networking.hostName = "old";
 
   # state version, never change this
   system.stateVersion = "25.05";

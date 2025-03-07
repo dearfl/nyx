@@ -25,17 +25,17 @@ _: {
           };
         };
         "rpi" = {
-          hostname = "192.168.8.114";
+          hostname = "rpi";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
         "desktop" = {
-          hostname = "192.168.8.241";
+          hostname = "desktop";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
         "old" = {
-          hostname = "192.168.8.205";
+          hostname = "old";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
