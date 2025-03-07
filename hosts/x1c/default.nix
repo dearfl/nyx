@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   imports = [
     ./hardware.nix
 
@@ -8,6 +9,7 @@ _: {
     ../../modules/wifi.nix
     ../../modules/firewall.nix
     ../../modules/doas.nix
+    ../../modules/hysteria.nix
 
     ../../modules/packages.nix
 
@@ -26,6 +28,11 @@ _: {
 
     ../../users/flr.nix
   ];
+
+  services.hysteria = {
+    enable = true;
+    configFile = config.vaultix.secrets.h2-tw.path;
+  };
 
   networking.hostName = "x1c";
 

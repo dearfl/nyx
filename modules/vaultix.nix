@@ -26,6 +26,11 @@
         v2ray-addr-tw2 = {
           file = ../secrets/v2ray-addr-tw2.age;
         };
+        h2-tw = {
+          file = ../secrets/h2-tw.age;
+          owner = "root";
+          group = "users";
+        };
       };
       templates = {
         v2ray =
