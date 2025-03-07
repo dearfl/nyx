@@ -65,7 +65,7 @@
             bind =
               [
                 "$mod, Return, exec, $terminal"
-                "$mod, S, exec, ${pkgs.slurp} | ${pkgs.grim} -g -"
+                "$mod, S, exec, ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -"
                 "$mod, P, exec, $menu"
                 "$mod, Q, killactive"
                 "$mod, Space, togglefloating"
@@ -149,191 +149,301 @@
         };
       };
 
-      # we want some bar
-      yambar =
-        let
-          mkDeco = color: {
-            stack = [
-              {
-                underline = {
-                  inherit color;
-                  size = 3;
-                };
-              }
+      # use waybar for now
+      waybar = {
+        enable = true;
+        settings = {
+          main = {
+            layer = "top";
+            position = "top";
+
+            modules-left = [
+              "clock"
+              "hyprland/workspaces"
             ];
-          };
-        in
-        {
-          enable = true;
-          settings = {
-            bar = {
-              location = "bottom";
-              height = 32;
-              background = "222222ff";
-              foreground = "dfdfdfff";
-              font = "Noto Sans Mono:size=14";
-              spacing = 8;
-              margin = 16;
+            modules-right = [
+              "network"
+              "cpu"
+              "memory"
+              "battery"
+              "idle_inhibitor"
+              "group/traydrawer"
+            ];
 
-              left = [
-                {
-                  clock = {
-                    date-format = "%a %d";
-                    time-format = "%H:%M";
-                    content = [
-                      {
-                        string = {
-                          text = "{date} {time}";
-                          deco = mkDeco "458588ff";
-                        };
-                      }
-                    ];
-                  };
-                }
-
-                # TODO: workspaces
-                # this is not working right now, pinging might be able to help
-                # update this when yambar-hyprland-wses updates
-                # {
-                #   script = {
-                #     path = "${pkgs.yambar-hyprland-wses}/bin/yambar-hyprland-wses";
-                #     content.list = {
-                #       spacing = 6;
-                #       items =
-                #         let
-                #           mkWorkspaceRule = i: {
-                #             map =
-                #             let
-                #               ws = builtins.toString (i + 1);
-                #               count = i + 2;
-                #             in
-                #             {
-                #               default = { string = { text = ws; foreground = "bbbbbbff"; }; };
-                #               conditions = {
-                #                 "workspace_count < ${builtins.toString count}" = { empty = {}; };
-                #                 "workspace_${ws}_focused" = { string = { text = ws; foreground = "fba922ff"; }; };
-                #                 "workspace_${ws}_active" = { string = { text = ws; foreground = "ffaa00ff"; }; };
-                #                 "workspace_${ws}_windows == 0" = { string = { text = ws; foreground = "555555ff"; }; };
-                #               };
-                #             };
-                #           };
-                #         in
-                #         builtins.genList mkWorkspaceRule 9;
-                #     };
-                #   };
-                # }
-
-                # app title
-                {
-                  foreign-toplevel.content.map.conditions = {
-                    "~activated" = {
-                      empty = { };
-                    };
-                    activated = [
-                      {
-                        string = {
-                          text = "{app-id}";
-                          foreground = "d65d0eff";
-                        };
-                      }
-                      {
-                        string = {
-                          text = ": {title}";
-                        };
-                      }
-                    ];
-                  };
-                }
+            "group/traydrawer" = {
+              orientation = "inherit";
+              modules = [
+                "custom/left-icon"
+                "tray"
               ];
+              drawer = {
+                transition-duration = 500;
+                children-class = "traydrawer-child";
+                transition-left-to-right = false;
+              };
+            };
 
-              right = [
-                {
-                  # network status
-                  # sometimes network module just disappear for no reason
-                  network = {
-                    poll-interval = 5000;
-                    content.map = {
-                      default = {
-                        empty = { };
-                      };
-                      conditions = {
-                        "state == down" = {
-                          string = {
-                            text = "";
-                            foreground = "ff0000ff";
-                          };
-                        };
-                        "state == up".map = {
-                          deco = mkDeco "8f3f71ff";
-                          conditions =
-                            let
-                              mkSymbol = symbol: {
-                                string = {
-                                  text = "${symbol} {ssid}";
-                                };
-                              };
-                            in
-                            {
-                              "signal >= -50" = mkSymbol "🌣";
-                              "signal >= -55" = mkSymbol "🌤";
-                              "signal >= -67" = mkSymbol "🌥";
-                              "signal >= -70" = mkSymbol "🌦";
-                              "signal >= -80" = mkSymbol "🌧";
-                            };
-                        };
-                      };
-                    };
-                  };
-                }
+            "custom/left-icon" = {
+              tooltip = false;
+              format = "";
+            };
 
-                # cpu usage
-                {
-                  cpu = {
-                    poll-interval = 2000;
-                    content.map.conditions."id < 0" = [
-                      {
-                        string = {
-                          text = "💻 {cpu}%";
-                          deco = mkDeco "689d6aff";
-                        };
-                      }
-                    ];
-                  };
-                }
+            clock = {
+              interval = 1;
+              format = "{:%R  %A %b %d}";
+              tooltip = true;
+              tooltip-format = "<tt>{calendar}</tt>";
+            };
 
-                # memory
-                {
-                  mem = {
-                    content = [
-                      {
-                        string = {
-                          text = " {percent_used}%";
-                          deco = mkDeco "b16286ff";
-                        };
-                      }
-                    ];
-                  };
-                }
+            memory = {
+              interval = 1;
+              format = "󰍛 {percentage:02}%";
+              states = {
+                warning = 85;
+              };
+            };
 
-                # battery
-                {
-                  battery = {
-                    name = "BAT0";
-                    content = [
-                      {
-                        string = {
-                          text = "  {capacity}%";
-                          deco = mkDeco "98971aff";
-                        };
-                      }
-                    ];
-                  };
-                }
+            cpu = {
+              interval = 1;
+              format = "󰻠 {usage:02}%";
+              states = {
+                warning = 95;
+              };
+            };
 
+            network = {
+              format-disconnected = "󰯡 Disconnected";
+              format-ethernet = "󰒢 Connected!";
+              format-linked = "󰖪 {essid} (No IP)";
+              format-wifi = "󰖩  {essid}";
+              interval = 1;
+              tooltip = false;
+            };
+
+            tray = {
+              icon-size = 14;
+              # show-passive-items = true;
+              spacing = 5;
+            };
+
+            battery = {
+              interval = 10;
+              full-at = 99;
+              states = {
+                "good" = 90;
+                "warning" = 30;
+                "critical" = 15;
+              };
+              format = "{icon}   {capacity}%";
+              format-charging = "󱐋 {capacity}%";
+              format-plugged = " {capacity}%";
+              # format-full = ""; // An empty format will hide the module
+              format-icons = [
+                ""
+                ""
+                ""
+                ""
+                ""
               ];
+              tooltip = false;
+            };
+
+            idle_inhibitor = {
+              format = "{icon}";
+              format-icons = {
+                activated = "󰒳";
+                deactivated = "󰒲";
+              };
             };
           };
         };
+      };
+
+      # we want some bar
+      #   yambar =
+      #     let
+      #       mkDeco = color: {
+      #         stack = [
+      #           {
+      #             underline = {
+      #               inherit color;
+      #               size = 3;
+      #             };
+      #           }
+      #         ];
+      #       };
+      #     in
+      #     {
+      #       enable = true;
+      #       settings = {
+      #         bar = {
+      #           location = "bottom";
+      #           height = 32;
+      #           background = "222222ff";
+      #           foreground = "dfdfdfff";
+      #           font = "Noto Sans Mono:size=14";
+      #           spacing = 8;
+      #           margin = 16;
+
+      #           left = [
+      #             {
+      #               clock = {
+      #                 date-format = "%a %d";
+      #                 time-format = "%H:%M";
+      #                 content = [
+      #                   {
+      #                     string = {
+      #                       text = "{date} {time}";
+      #                       deco = mkDeco "458588ff";
+      #                     };
+      #                   }
+      #                 ];
+      #               };
+      #             }
+
+      #             # TODO: workspaces
+      #             # this is not working right now, pinging might be able to help
+      #             # update this when yambar-hyprland-wses updates
+      #             # {
+      #             #   script = {
+      #             #     path = "${pkgs.yambar-hyprland-wses}/bin/yambar-hyprland-wses";
+      #             #     content.list = {
+      #             #       spacing = 6;
+      #             #       items =
+      #             #         let
+      #             #           mkWorkspaceRule = i: {
+      #             #             map =
+      #             #             let
+      #             #               ws = builtins.toString (i + 1);
+      #             #               count = i + 2;
+      #             #             in
+      #             #             {
+      #             #               default = { string = { text = ws; foreground = "bbbbbbff"; }; };
+      #             #               conditions = {
+      #             #                 "workspace_count < ${builtins.toString count}" = { empty = {}; };
+      #             #                 "workspace_${ws}_focused" = { string = { text = ws; foreground = "fba922ff"; }; };
+      #             #                 "workspace_${ws}_active" = { string = { text = ws; foreground = "ffaa00ff"; }; };
+      #             #                 "workspace_${ws}_windows == 0" = { string = { text = ws; foreground = "555555ff"; }; };
+      #             #               };
+      #             #             };
+      #             #           };
+      #             #         in
+      #             #         builtins.genList mkWorkspaceRule 9;
+      #             #     };
+      #             #   };
+      #             # }
+
+      #             # app title
+      #             {
+      #               foreign-toplevel.content.map.conditions = {
+      #                 "~activated" = {
+      #                   empty = { };
+      #                 };
+      #                 activated = [
+      #                   {
+      #                     string = {
+      #                       text = "{app-id}";
+      #                       foreground = "d65d0eff";
+      #                     };
+      #                   }
+      #                   {
+      #                     string = {
+      #                       text = ": {title}";
+      #                     };
+      #                   }
+      #                 ];
+      #               };
+      #             }
+      #           ];
+
+      #           right = [
+      #             {
+      #               # network status
+      #               # sometimes network module just disappear for no reason
+      #               network = {
+      #                 poll-interval = 5000;
+      #                 content.map = {
+      #                   default = {
+      #                     empty = { };
+      #                   };
+      #                   conditions = {
+      #                     "state == down" = {
+      #                       string = {
+      #                         text = "";
+      #                         foreground = "ff0000ff";
+      #                       };
+      #                     };
+      #                     "state == up".map = {
+      #                       deco = mkDeco "8f3f71ff";
+      #                       conditions =
+      #                         let
+      #                           mkSymbol = symbol: {
+      #                             string = {
+      #                               text = "${symbol} {ssid}";
+      #                             };
+      #                           };
+      #                         in
+      #                         {
+      #                           "signal >= -50" = mkSymbol "🌣";
+      #                           "signal >= -55" = mkSymbol "🌤";
+      #                           "signal >= -67" = mkSymbol "🌥";
+      #                           "signal >= -70" = mkSymbol "🌦";
+      #                           "signal >= -80" = mkSymbol "🌧";
+      #                         };
+      #                     };
+      #                   };
+      #                 };
+      #               };
+      #             }
+
+      #             # cpu usage
+      #             {
+      #               cpu = {
+      #                 poll-interval = 2000;
+      #                 content.map.conditions."id < 0" = [
+      #                   {
+      #                     string = {
+      #                       text = "💻 {cpu}%";
+      #                       deco = mkDeco "689d6aff";
+      #                     };
+      #                   }
+      #                 ];
+      #               };
+      #             }
+
+      #             # memory
+      #             {
+      #               mem = {
+      #                 content = [
+      #                   {
+      #                     string = {
+      #                       text = " {percent_used}%";
+      #                       deco = mkDeco "b16286ff";
+      #                     };
+      #                   }
+      #                 ];
+      #               };
+      #             }
+
+      #             # battery
+      #             {
+      #               battery = {
+      #                 name = "BAT0";
+      #                 content = [
+      #                   {
+      #                     string = {
+      #                       text = "  {capacity}%";
+      #                       deco = mkDeco "98971aff";
+      #                     };
+      #                   }
+      #                 ];
+      #               };
+      #             }
+
+      #           ];
+      #         };
+      #       };
+      #     };
     };
 
     services = {
