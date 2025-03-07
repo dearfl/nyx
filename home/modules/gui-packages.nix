@@ -3,9 +3,8 @@
   config = {
     home.packages = [
       pkgs.blender
-      # pkgs.kicad
+      pkgs.kicad
       pkgs.mupdf
-      pkgs.scrot
       pkgs.telegram-desktop
       pkgs.vial
       pkgs.slurp
