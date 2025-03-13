@@ -2,7 +2,10 @@ _: {
   config = {
     users.users.flr = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "input" ];
+      extraGroups = [
+        "wheel"
+        "input"
+      ];
       packages = [ ];
       uid = 1000;
       openssh.authorizedKeys.keys = [

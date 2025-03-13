@@ -121,6 +121,12 @@
           "aarch64-linux"
         ];
 
+        perSystem =
+          { pkgs, ... }:
+          {
+            formatter = pkgs.nixfmt-rfc-style;
+          };
+
         # debug = true;
       }
     );
