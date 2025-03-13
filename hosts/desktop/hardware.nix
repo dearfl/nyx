@@ -52,10 +52,12 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
+    nvidia-container-toolkit.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
       open = false;
-      nvidiaSettings = false;
+      modesetting.enable = true;
+      nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
