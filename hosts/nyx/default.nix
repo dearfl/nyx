@@ -34,7 +34,7 @@
     configFile = config.vaultix.secrets.h2-tw.path;
   };
 
-  networking.hostName = "x1c";
+  networking.hostName = "nyx";
 
   # state version, never change this
   system.stateVersion = "25.05";
