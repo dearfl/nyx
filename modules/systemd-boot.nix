@@ -1,8 +1,14 @@
 _: {
   # use systemd-boot
   config = {
-    # Use the systemd-boot EFI boot loader.
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader = {
+      systemd-boot = {
+        # Use the systemd-boot EFI boot loader.
+        enable = true;
+        # at most 10 boot menu
+        configurationLimit = 10;
+      };
+      efi.canTouchEfiVariables = true;
+    };
   };
 }

@@ -17,12 +17,18 @@
         package = pkgs.nixVersions.stable;
         # Opinionated: disable channels
         channel.enable = false;
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          options = "--delete-older-than 1w";
+        };
         settings = {
           # use flakes
           experimental-features = [
             "nix-command"
             "flakes"
           ];
+          auto-optimise-store = true;
           # Opinionated: disable global registry
           flake-registry = "";
           # Workaround for https://github.com/NixOS/nix/issues/9574
