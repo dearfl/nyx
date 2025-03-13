@@ -120,7 +120,7 @@
           "aarch64-linux"
         ];
 
-        debug = true;
+        # debug = true;
       }
     );
 }
