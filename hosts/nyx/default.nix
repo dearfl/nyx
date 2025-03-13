@@ -22,7 +22,7 @@ _: {
     ../../users/flr.nix
   ];
 
-  networking.hostName = "old";
+  networking.hostName = "nyx";
 
   # state version, never change this
   system.stateVersion = "25.05";

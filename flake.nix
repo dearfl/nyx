@@ -28,14 +28,14 @@
         flake = {
           nixosConfigurations = {
             # my main laptop x1 carbon 8th gen
-            x1c = withSystem "x86_64-linux" (
+            nyx = withSystem "x86_64-linux" (
               { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
 
                 modules = [
-                  ./hosts/x1c
+                  ./hosts/nyx
 
                   # home manager
                   home-manager.nixosModules.home-manager
@@ -70,14 +70,14 @@
             );
 
             # my old laptop
-            old = withSystem "x86_64-linux" (
+            x1c = withSystem "x86_64-linux" (
               { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
                 inherit system;
 
                 modules = [
-                  ./hosts/old
+                  ./hosts/x1c
 
                   # home manager
                   home-manager.nixosModules.home-manager

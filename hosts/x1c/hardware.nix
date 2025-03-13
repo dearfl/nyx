@@ -11,27 +11,27 @@
 
   boot = {
     initrd = {
-      kernelModules = [ ];
       availableKernelModules = [
         "xhci_pci"
-        "nvme"
-        "usbhid"
+        "ehci_pci"
+        "ahci"
         "usb_storage"
         "sd_mod"
+        "sdhci_pci"
       ];
+      kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
-
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/2326b934-c0f1-4566-8c9e-89cfa14006c3";
-      fsType = "btrfs";
+      device = "/dev/disk/by-uuid/c00f516b-6f21-4aa2-8354-87de3bd22cc2";
+      fsType = "ext4";
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/33F1-857F";
+      device = "/dev/disk/by-uuid/6718-C039";
       fsType = "vfat";
       options = [
         "fmask=0077"
@@ -41,7 +41,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/f2527664-02e8-4665-9549-989f27f7249e"; }
+    { device = "/dev/disk/by-uuid/33da647e-dadc-48e1-adfb-3c32580bfa47"; }
   ];
 
   networking.useDHCP = lib.mkDefault true;
