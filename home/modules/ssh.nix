@@ -34,8 +34,13 @@ _: {
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
-        "old" = {
-          hostname = "old";
+        "x1c" = {
+          hostname = "x1c";
+          user = "flr";
+          # identityFile = "/home/flr/.ssh/id_rsa";
+        };
+        "nyx" = {
+          hostname = "nyx";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
