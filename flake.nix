@@ -89,7 +89,7 @@
             );
 
             # my old laptop
-            old = withSystem "x86_64-linux" (
+            x1c = withSystem "x86_64-linux" (
               { system, ... }:
               with inputs.nixpkgs;
               lib.nixosSystem {
@@ -100,7 +100,7 @@
                   inherit inputs;
                 };
                 modules = [
-                  ./hosts/old
+                  ./hosts/x1c
 
                   # home manager
                   home-manager.nixosModules.home-manager
