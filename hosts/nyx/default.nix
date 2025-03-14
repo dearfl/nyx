@@ -17,6 +17,7 @@
     ../../modules/ssh.nix
 
     ../../modules/fonts.nix
+    ../../modules/bluetooth.nix
     ../../modules/sound.nix
     ../../modules/touchpad.nix
     ../../modules/hyprland.nix
