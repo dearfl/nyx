@@ -44,7 +44,7 @@
             decoration = {
               rounding = 4;
               inactive_opacity = 0.8;
-              active_opacity = 0.92;
+              active_opacity = 0.95;
             };
 
             master = {
