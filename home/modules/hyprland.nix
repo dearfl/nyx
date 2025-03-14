@@ -16,7 +16,7 @@
             "$mod" = "SUPER";
 
             exec-once = [
-              "${pkgs.yambar}/bin/yambar"
+              "${pkgs.waybar}/bin/waybar"
               "${pkgs.copyq}/bin/copyq"
             ];
 
