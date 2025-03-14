@@ -4,6 +4,9 @@ _: {
       enable = true;
       shellAbbrs = {
         gs = "git status";
+        gc = "git checkout";
+        gcl = "git clone";
+        gm = "git commit";
       };
     };
   };
