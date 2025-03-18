@@ -85,7 +85,7 @@
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.flr = import ./home/users/desktop.nix;
+                    home-manager.users.flr = import ./home/users/minimal.nix;
                   }
                 ];
               }
@@ -137,7 +137,7 @@
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.flr = import ./home/users/rpi.nix;
+                    home-manager.users.flr = import ./home/users/minimal.nix;
                   }
                 ];
               }
