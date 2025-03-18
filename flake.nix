@@ -20,6 +20,7 @@
       self,
       flake-parts,
       nixpkgs,
+      vaultix,
       home-manager,
       raspberry-pi-nix,
       ...
@@ -28,8 +29,9 @@
       { withSystem, ... }:
       {
         imports = [
-          inputs.vaultix.flakeModules.default
-          inputs.home-manager.flakeModules.default
+          vaultix.flakeModules.default
+          home-manager.flakeModules.default
+          flake-parts.flakeModules.easyOverlay
         ];
         flake = {
           vaultix = {
