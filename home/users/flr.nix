@@ -4,6 +4,7 @@ _: {
     ./minimal.nix
 
     ../modules/gui-packages.nix
+    ../modules/fontconfig.nix
 
     ../modules/alacritty.nix
     ../modules/hyprland.nix
