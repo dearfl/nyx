@@ -2,16 +2,9 @@ _: {
   imports = [
     ./hardware.nix
 
-    ../../modules/common.nix
-    ../../modules/nix.nix
+    ../minimal
+
     ../../modules/wifi.nix
-    ../../modules/firewall.nix
-    ../../modules/doas.nix
-
-    ../../modules/packages.nix
-
-    ../../modules/git.nix
-    ../../modules/ssh.nix
 
     ../../modules/clickhouse.nix
 
