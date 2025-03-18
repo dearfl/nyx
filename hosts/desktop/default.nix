@@ -3,16 +3,9 @@
   imports = [
     ./hardware.nix
 
-    ../../modules/common.nix
-    ../../modules/nix.nix
+    ../minimal
+
     ../../modules/systemd-boot.nix
-    ../../modules/firewall.nix
-    ../../modules/doas.nix
-
-    ../../modules/packages.nix
-
-    ../../modules/git.nix
-    ../../modules/ssh.nix
 
     ../../modules/static-web-server.nix
 
