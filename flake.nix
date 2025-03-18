@@ -24,7 +24,8 @@
       { withSystem, ... }:
       {
         imports = [
-          inputs.home-manager.flakeModules.default
+          home-manager.flakeModules.default
+          flake-parts.flakeModules.easyOverlay
         ];
         flake = {
           nixosConfigurations = {
