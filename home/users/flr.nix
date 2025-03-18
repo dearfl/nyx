@@ -9,5 +9,6 @@ _: {
     ../modules/hyprland.nix
     ../modules/qutebrowser.nix
     ../modules/dunst.nix
+    ../modules/fcitx5.nix
   ];
 }
