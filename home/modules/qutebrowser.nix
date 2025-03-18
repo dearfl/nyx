@@ -13,7 +13,8 @@ _: {
         y = "https://youtube.com/results?search_query={}";
         w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
         aw = "https://wiki.archlinux.org/?search={}";
-        nw = "https://wiki.nixos.org/index.php?search={}";
+        nw = "https://wiki.nixos.org/wiki/{}";
+        no = "https://search.nixos.org/options?channel=unstable&query={}";
         g = "https://www.google.com/search?hl=en&q={}";
         r = "https://doc.rust-lang.org/stable/std/?search={}";
         c = "https://en.cppreference.com/w/cpp/keyword/{}";
