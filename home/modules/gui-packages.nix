@@ -4,7 +4,6 @@
     home.packages = [
       pkgs.blender
       pkgs.kicad
-      pkgs.mupdf
       pkgs.telegram-desktop
       pkgs.vial
       pkgs.slurp
