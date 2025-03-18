@@ -12,7 +12,10 @@
       url = "github:milieuim/vaultix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
+    raspberry-pi-nix = {
+      url = "github:nix-community/raspberry-pi-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
