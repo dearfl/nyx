@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixos-hardware = {
+      url = "github:nixos/nixos-hardware";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -17,8 +20,9 @@
   outputs =
     inputs@{
       self,
-      flake-parts,
       nixpkgs,
+      nixos-hardware,
+      flake-parts,
       home-manager,
       raspberry-pi-nix,
       ...
@@ -40,6 +44,9 @@
                 inherit system;
 
                 modules = [
+                  # we are actually 8th gen, but it should be ok?
+                  nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+
                   ./hosts/nyx
 
                   # home manager
@@ -61,6 +68,9 @@
                 inherit system;
 
                 modules = [
+                  nixos-hardware.nixosModules.common-cpu-amd
+                  nixos-hardware.nixosModules.common-gpu-nvidia
+                  nixos-hardware.nixosModules.common-pc-ssd
                   ./hosts/desktop
 
                   # home manager
@@ -82,6 +92,8 @@
                 inherit system;
 
                 modules = [
+                  nixos-hardware.nixosModules.common-cpu-intel
+                  nixos-hardware.nixosModules.common-pc-laptop-ssd
                   ./hosts/x1c
 
                   # home manager
@@ -103,6 +115,8 @@
                 inherit system;
 
                 modules = [
+                  nixos-hardware.nixosModules.raspberry-pi-4
+
                   ./hosts/rpi
 
                   raspberry-pi-nix.nixosModules.raspberry-pi
