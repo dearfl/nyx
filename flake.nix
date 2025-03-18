@@ -126,6 +126,14 @@
           { pkgs, ... }:
           {
             formatter = pkgs.nixfmt-rfc-style;
+            devShells.default = pkgs.mkShell {
+              buildInputs = [
+                pkgs.nil
+                pkgs.nixd
+                pkgs.nixfmt-rfc-style
+              ];
+              shellHook = "exec ${pkgs.fish}/bin/fish";
+            };
           };
 
         # debug = true;
