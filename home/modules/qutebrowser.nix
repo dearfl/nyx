@@ -24,9 +24,14 @@ _: {
         rd = "https://docs.rs/releases/search?query={}";
       };
       settings = {
-        tabs.position = "bottom";
-        content.geolocation = false;
+        tabs = {
+          position = "bottom";
+          show = "switching";
+        };
+        zoom.default = "150%";
+        fonts.default_size = "16pt";
         confirm_quit = [ "downloads" ];
+        scrolling.smooth = true;
         downloads = {
           location = {
             suggestion = "filename";
@@ -44,6 +49,34 @@ _: {
           webpage = {
             darkmode.enabled = true;
             preferred_color_scheme = "dark";
+          };
+        };
+        content = {
+          geolocation = false;
+          headers.do_not_track = true;
+          cookies.accept = "no-3rdparty";
+          dns_prefetch = true;
+          xss_auditing = true;
+
+          blocking = {
+            enabled = true;
+            method = "both";
+            adblock.lists = [
+              "https://easylist.to/easylist/easylist.txt"
+              "https://easylist.to/easylist/easyprivacy.txt"
+              "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
+              "https://easylist.to/easylist/fanboy-annoyance.txt"
+              "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt"
+              "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt"
+            ];
+            hosts.lists = [
+              "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            ];
           };
         };
       };
