@@ -7,6 +7,7 @@ _: {
     ../modules/ssh.nix
     ../modules/helix.nix
     ../modules/fish.nix
+    ../modules/tmux.nix
   ];
 
   config = {
