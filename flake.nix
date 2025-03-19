@@ -115,7 +115,7 @@
                 inherit system;
 
                 modules = [
-                  nixos-hardware.nixosModules.raspberry-pi-4
+                  # nixos-hardware.nixosModules.raspberry-pi-4
 
                   ./hosts/rpi
 
