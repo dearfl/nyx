@@ -7,6 +7,7 @@
   raspberry-pi-nix = {
     board = "bcm2711";
     libcamera-overlay.enable = true;
+    uboot.enable = true;
   };
   # users.users.root.initialPassword = "root";
   environment.systemPackages = with pkgs; [
