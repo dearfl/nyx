@@ -6,7 +6,7 @@
 
   boot.initrd.availableKernelModules = [ ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "bcm2835-v4l2" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
