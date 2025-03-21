@@ -5,6 +5,10 @@ _: {
       extraGroups = [
         "wheel"
         "input"
+        "video"
+        "audio"
+        "users"
+        "disk"
       ];
       packages = [ ];
       uid = 1000;
