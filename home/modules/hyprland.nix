@@ -477,7 +477,7 @@
         settings = {
           default = {
             duration = "5m";
-            mode = "fit";
+            mode = "stretch";
             sorting = "random";
           };
           any = {
