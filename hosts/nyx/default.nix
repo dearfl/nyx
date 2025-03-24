@@ -19,8 +19,6 @@
     ../../modules/vaultix.nix
     ./vaultix.nix
 
-    ../../modules/v2ray.nix
-
     ../../users/flr.nix
   ];
 
