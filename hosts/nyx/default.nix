@@ -1,31 +1,20 @@
-{ config, ... }:
-{
+_: {
   imports = [
     ./hardware.nix
+    ./vaultix.nix
 
     ../minimal
 
-    ../../modules/systemd-boot.nix
-    ../../modules/wifi.nix
+    ../optional/systemd-boot.nix
+    ../optional/wifi.nix
 
-    ../../modules/hysteria.nix
+    ../optional/bluetooth.nix
+    ../optional/touchpad.nix
 
-    ../../modules/fonts.nix
-    ../../modules/bluetooth.nix
-    ../../modules/sound.nix
-    ../../modules/touchpad.nix
-    ../../modules/hyprland.nix
+    ../optional/gui.nix
 
-    ../../modules/vaultix.nix
-    ./vaultix.nix
-
-    ../../users/flr.nix
+    ../optional/hysteria.nix
   ];
-
-  services.hysteria = {
-    enable = true;
-    configFile = config.vaultix.secrets.h2-tw.path;
-  };
 
   networking.hostName = "nyx";
 

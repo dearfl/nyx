@@ -9,7 +9,7 @@
     vaultix = {
       secrets = {
         h2-tw = {
-          file = ../secrets/h2-tw.age;
+          file = ../../secrets/h2-tw.age;
           owner = "root";
           group = "users";
         };

@@ -1,45 +1,16 @@
-{ pkgs, ... }:
-{
+_: {
   imports = [
     ./hardware.nix
+    ./vaultix.nix
 
     ../minimal
 
-    ../../modules/systemd-boot.nix
+    ../optional/systemd-boot.nix
+    ../optional/static-web-server.nix
 
-    ../../modules/static-web-server.nix
-
-    ../../modules/vaultix.nix
-    ./vaultix.nix
-
-    ../../users/flr.nix
+    ../optional/cuda.nix
+    ../optional/ollama.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.cudaSupport = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-
-  environment.systemPackages = with pkgs; [
-    cudaPackages.cudatoolkit
-  ];
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.ollama = {
-    enable = true;
-    host = "0.0.0.0";
-    # port = 8000;
-    acceleration = "cuda";
-    package = pkgs.ollama-cuda;
-  };
-
-  # llama-cpp need specify models
-  # services.llama-cpp = {
-  #   enable = true;
-  #   host = "0.0.0.0";
-  #   # port = 8000;
-  #   # acceleration = "cuda";
-  #   # package = pkgs.ollama-cuda;
-  # };
 
   networking.hostName = "desktop";
 

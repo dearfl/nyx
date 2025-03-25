@@ -1,19 +1,15 @@
 _: {
   imports = [
     ./hardware.nix
+    ./vaultix.nix
 
     ../minimal
 
-    ../../modules/wifi.nix
+    ../optional/wifi.nix
 
-    ../../modules/vaultix.nix
-    ./vaultix.nix
+    ../optional/clickhouse.nix
 
-    ../../modules/clickhouse.nix
-
-    ../../modules/rpi.nix
-
-    ../../users/flr.nix
+    ../optional/rpi.nix
   ];
 
   networking.hostName = "rpi";
