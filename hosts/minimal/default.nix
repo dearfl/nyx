@@ -15,5 +15,7 @@ _: {
     ./ssh.nix
 
     ./vaultix.nix
+
+    ./hysteria.nix
   ];
 }

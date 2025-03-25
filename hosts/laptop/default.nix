@@ -9,7 +9,5 @@ _: {
     ../optional/touchpad.nix
 
     ../optional/gui.nix
-
-    ../optional/hysteria.nix
   ];
 }
