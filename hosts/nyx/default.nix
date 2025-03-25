@@ -4,16 +4,13 @@ _: {
 
     ../minimal
 
-    ../../modules/systemd-boot.nix
-    ../../modules/wifi.nix
+    ../optional/systemd-boot.nix
+    ../optional/wifi.nix
 
-    ../../modules/fonts.nix
-    ../../modules/bluetooth.nix
-    ../../modules/sound.nix
-    ../../modules/touchpad.nix
-    ../../modules/hyprland.nix
+    ../optional/bluetooth.nix
+    ../optional/touchpad.nix
 
-    ../../users/flr.nix
+    ../optional/gui.nix
   ];
 
   networking.hostName = "nyx";

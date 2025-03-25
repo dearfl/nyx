@@ -1,13 +1,15 @@
 _: {
   imports = [
-    ../../modules/packages.nix
+    ../../users/flr.nix
 
-    ../../modules/common.nix
-    ../../modules/nix.nix
-    ../../modules/firewall.nix
-    ../../modules/doas.nix
+    ./packages.nix
 
-    ../../modules/git.nix
-    ../../modules/ssh.nix
+    ./common.nix
+    ./nix.nix
+    ./firewall.nix
+    ./doas.nix
+
+    ./git.nix
+    ./ssh.nix
   ];
 }

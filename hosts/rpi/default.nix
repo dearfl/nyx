@@ -4,13 +4,11 @@ _: {
 
     ../minimal
 
-    ../../modules/wifi.nix
+    ../optional/wifi.nix
 
-    ../../modules/clickhouse.nix
+    ../optional/clickhouse.nix
 
-    ../../modules/rpi.nix
-
-    ../../users/flr.nix
+    ../optional/rpi.nix
   ];
 
   networking.hostName = "rpi";

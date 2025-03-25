@@ -4,15 +4,10 @@ _: {
 
     ../minimal
 
-    ../../modules/systemd-boot.nix
-    ../../modules/wifi.nix
-
-    ../../modules/fonts.nix
-    ../../modules/sound.nix
-    ../../modules/touchpad.nix
-    ../../modules/hyprland.nix
-
-    ../../users/flr.nix
+    ../optional/systemd-boot.nix
+    ../optional/wifi.nix
+    ../optional/touchpad.nix
+    ../optional/gui.nix
   ];
 
   networking.hostName = "x1c";
