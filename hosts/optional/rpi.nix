@@ -15,11 +15,24 @@
     raspberrypi-eeprom
     bluez
     bluez-tools
+    ffmpeg
     # libcamera-apps
   ];
   hardware = {
     bluetooth.enable = true;
     raspberry-pi.config = {
+      pi4 = {
+        dt-overlays = {
+          vc4-kms-v3d = {
+            enable = true;
+            params = {
+              cma-512 = {
+                enable = true;
+              };
+            };
+          };
+        };
+      };
       all = {
         options = {
           start_x = {
@@ -29,6 +42,12 @@
           gpu_mem = {
             enable = true;
             value = 256;
+          };
+        };
+        dt-overlays = {
+          vc4-kms-v3d = {
+            enable = true;
+            params = { };
           };
         };
       };
