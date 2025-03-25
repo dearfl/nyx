@@ -3,12 +3,7 @@ _: {
     ./hardware.nix
     ./vaultix.nix
 
-    ../minimal
-
-    ../optional/systemd-boot.nix
-    ../optional/wifi.nix
-    ../optional/touchpad.nix
-    ../optional/gui.nix
+    ../laptop
   ];
 
   networking.hostName = "x1c";

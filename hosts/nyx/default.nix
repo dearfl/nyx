@@ -3,17 +3,7 @@ _: {
     ./hardware.nix
     ./vaultix.nix
 
-    ../minimal
-
-    ../optional/systemd-boot.nix
-    ../optional/wifi.nix
-
-    ../optional/bluetooth.nix
-    ../optional/touchpad.nix
-
-    ../optional/gui.nix
-
-    ../optional/hysteria.nix
+    ../laptop
   ];
 
   networking.hostName = "nyx";
