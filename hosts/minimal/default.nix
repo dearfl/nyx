@@ -11,6 +11,5 @@ _: {
 
     ./git.nix
     ./ssh.nix
-    ./direnv.nix
   ];
 }
