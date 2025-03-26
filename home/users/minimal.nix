@@ -8,6 +8,7 @@ _: {
     ../modules/helix.nix
     ../modules/fish.nix
     ../modules/tmux.nix
+    ../modules/direnv.nix
   ];
 
   config = {
