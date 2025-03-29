@@ -35,6 +35,13 @@
           flake-parts.flakeModules.easyOverlay
         ];
         flake = {
+          templates = {
+            rust = {
+              path = ./templates/rust;
+              description = "Rust template, using Naersk";
+            };
+          };
+
           nixosConfigurations = {
             # my main laptop x1 carbon 8th gen
             nyx = withSystem "x86_64-linux" (
@@ -152,8 +159,6 @@
               shellHook = "exec ${pkgs.fish}/bin/fish";
             };
           };
-
-        # debug = true;
       }
     );
 }
