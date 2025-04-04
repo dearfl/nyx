@@ -7,6 +7,10 @@ _: {
         flr = "https://flr.me";
         gb = "https://godbolt.org";
         tr = "https://github.com/trending/rust?since=daily";
+        ext = "https://ext.to";
+        cron = "https://crontab.guru";
+        "4c" = "https://4chan.org";
+        ph = "https://pornhub.com";
       };
       searchEngines = {
         DEFAULT = "https://google.com/search?q={}";
@@ -26,7 +30,7 @@ _: {
       settings = {
         tabs = {
           position = "bottom";
-          show = "switching";
+          show = "multiple";
         };
         zoom.default = "150%";
         fonts.default_size = "16pt";
@@ -83,7 +87,7 @@ _: {
       keyBindings = {
         normal = {
           "<Ctrl-l>" = "config-cycle content.proxy socks5://localhost:1080 none";
-          "zd" = "hint links spawn yt-dlp -P ~/res/downloads --proxy socks5://localhost:1080 {hint-url}";
+          "zz" = "hint links spawn yt-dlp -P ~/res/downloads --proxy socks5://localhost:1080 {hint-url}";
         };
       };
     };
