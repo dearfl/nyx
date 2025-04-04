@@ -16,6 +16,7 @@ _: {
 
     ./vaultix.nix
 
+    ./v2ray.nix
     ./hysteria.nix
   ];
 }
