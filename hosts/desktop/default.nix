@@ -7,6 +7,7 @@ _: {
 
     ../optional/systemd-boot.nix
     ../optional/static-web-server.nix
+    ../optional/transmission.nix
 
     ../optional/cuda.nix
     ../optional/ollama.nix
