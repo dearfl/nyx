@@ -16,6 +16,7 @@
     bluez
     bluez-tools
     ffmpeg
+    libcamera
     # libcamera-apps
   ];
   hardware = {
