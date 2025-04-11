@@ -52,6 +52,10 @@
               path = ./templates/rust;
               description = "Rust template, using Naersk";
             };
+            bevy = {
+              path = ./templates/bevy;
+              description = "Bevy template";
+            };
           };
 
           nixosConfigurations = {
