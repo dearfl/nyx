@@ -7,8 +7,6 @@ _: {
 
     ../optional/wifi.nix
 
-    ../optional/clickhouse.nix
-
     ../optional/rpi.nix
   ];
 
