@@ -102,7 +102,8 @@
 
             windowrulev2 = [
               "suppressevent maximize, class:.*"
-              "float, class:bevy, title: bevy"
+              "float, title:App" # Bevy examples
+              "float, title:Bevy.*" # Bevy apps
             ];
           };
         };
