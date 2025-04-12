@@ -15,10 +15,6 @@
       url = "github:milieuim/vaultix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    raspberry-pi-nix = {
-      url = "github:nix-community/raspberry-pi-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -29,7 +25,6 @@
       flake-parts,
       vaultix,
       home-manager,
-      raspberry-pi-nix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -154,11 +149,9 @@
                   inherit inputs;
                 };
                 modules = [
-                  # nixos-hardware.nixosModules.raspberry-pi-4
+                  nixos-hardware.nixosModules.raspberry-pi-4
 
                   ./hosts/rpi
-
-                  raspberry-pi-nix.nixosModules.raspberry-pi
 
                   # home manager
                   home-manager.nixosModules.home-manager
