@@ -11,10 +11,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    raspberry-pi-nix = {
-      url = "github:nix-community/raspberry-pi-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -24,7 +20,6 @@
       nixos-hardware,
       flake-parts,
       home-manager,
-      raspberry-pi-nix,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -126,11 +121,9 @@
                 inherit system;
 
                 modules = [
-                  # nixos-hardware.nixosModules.raspberry-pi-4
+                  nixos-hardware.nixosModules.raspberry-pi-4
 
                   ./hosts/rpi
-
-                  raspberry-pi-nix.nixosModules.raspberry-pi
 
                   # home manager
                   home-manager.nixosModules.home-manager
