@@ -6,6 +6,8 @@
       bat
       bottom
       btrfs-progs
+      choose
+      duf
       eza
       fd
       fish
@@ -14,12 +16,14 @@
       hexyl
       jq
       lsof
+      miniserve
       ncdu
       rage
       ripgrep
       tmux
       tokei
       wget
+      xh
       yazi
       yt-dlp
     ];
