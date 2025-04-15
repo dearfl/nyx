@@ -3,6 +3,8 @@ _: {
     programs.qutebrowser = {
       enable = true;
       quickmarks = {
+        y = "https://youtube.com";
+        g = "https://www.google.com";
         gh = "https://github.com";
         flr = "https://flr.me";
         gb = "https://godbolt.org";
