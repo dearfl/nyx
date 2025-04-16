@@ -29,13 +29,19 @@ _: {
         "!.gitattributes"
       ];
       languages = {
-        language-server.rust-analyzer.config.inlayHints = {
-          bindingModeHints.enable = true;
-          closingBraceHints.minLines = 10;
-          closureReturnTypeHints.enable = "with_block";
-          discriminantHints.enable = "fieldless";
-          lifetimeElisionHints.enable = "skip_trivial";
-          typeHints.hideClosureInitialization = false;
+        language-server = {
+          rust-analyzer.config.inlayHints = {
+            bindingModeHints.enable = true;
+            closingBraceHints.minLines = 10;
+            closureReturnTypeHints.enable = "with_block";
+            discriminantHints.enable = "fieldless";
+            lifetimeElisionHints.enable = "skip_trivial";
+            typeHints.hideClosureInitialization = false;
+          };
+          pylsp.config.pylsp.plugins = {
+            ruff.enabled = true;
+            black.enabled = true;
+          };
         };
       };
     };
