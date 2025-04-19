@@ -7,6 +7,8 @@ _: {
       home = "/data/transmission";
       settings = {
         watch-dir-enabled = true;
+        speed-limit-up-enabled = true;
+        speed-limit-up = 1000;
       };
     };
   };
