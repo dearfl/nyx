@@ -11,6 +11,7 @@ _: {
           "/home/flr/dev/nyx"
           "/home/flr/dev/python"
           "/home/flr/dev/blog"
+          "/home/flr/dev/interview"
         ];
       };
     };
