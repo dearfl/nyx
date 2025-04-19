@@ -36,11 +36,9 @@
           # mirrors
           substituters = [
             "https://mirrors.ustc.edu.cn/nix-channels/store"
-            "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
           ];
           trusted-substituters = [
             "https://mirrors.ustc.edu.cn/nix-channels/store"
-            "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
           ];
         };
         # Opinionated: make flake registry and nix path match flake inputs
