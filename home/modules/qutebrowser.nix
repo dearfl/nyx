@@ -5,6 +5,7 @@ _: {
       quickmarks = {
         y = "https://youtube.com";
         g = "https://www.google.com";
+        ddg = "https://duckduckgo.com";
         gh = "https://github.com";
         flr = "https://flr.me";
         gb = "https://godbolt.org";
@@ -16,6 +17,7 @@ _: {
       };
       searchEngines = {
         DEFAULT = "https://google.com/search?q={}";
+        d = "https://duckduckgo.com/?q={}";
         y = "https://youtube.com/results?search_query={}";
         w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
         aw = "https://wiki.archlinux.org/?search={}";
