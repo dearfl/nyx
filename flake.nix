@@ -153,7 +153,6 @@
                 pkgs.nixd
                 pkgs.nixfmt-rfc-style
               ];
-              shellHook = "exec ${pkgs.fish}/bin/fish";
             };
           };
       }
