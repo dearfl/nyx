@@ -30,13 +30,17 @@ _: {
       ];
       languages = {
         language-server = {
-          rust-analyzer.config.inlayHints = {
-            bindingModeHints.enable = true;
-            closingBraceHints.minLines = 10;
-            closureReturnTypeHints.enable = "with_block";
-            discriminantHints.enable = "fieldless";
-            lifetimeElisionHints.enable = "skip_trivial";
-            typeHints.hideClosureInitialization = false;
+          rust-analyzer.config = {
+            checkOnSave.command = "clippy";
+            cargo.allFeatures = true;
+            inlayHints = {
+              bindingModeHints.enable = true;
+              closingBraceHints.minLines = 10;
+              closureReturnTypeHints.enable = "with_block";
+              discriminantHints.enable = "fieldless";
+              lifetimeElisionHints.enable = "skip_trivial";
+              typeHints.hideClosureInitialization = false;
+            };
           };
           pylsp.config.pylsp.plugins = {
             ruff.enabled = true;
