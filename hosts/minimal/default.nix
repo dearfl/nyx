@@ -13,6 +13,7 @@ _: {
 
     ./git.nix
     ./ssh.nix
+    ./proxychains.nix
 
     ./vaultix.nix
 
