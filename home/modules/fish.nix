@@ -9,6 +9,7 @@ _: {
         gcl = "git clone";
         gm = "git commit";
         pb = "curl -F 'c=@-' 'https://fars.ee'";
+        cargo-git = "cargo --config net.git-fetch-with-cli=true ";
       };
       functions = {
         fish_prompt = ''
