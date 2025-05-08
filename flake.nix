@@ -39,6 +39,10 @@
               path = ./templates/bevy;
               description = "Bevy template";
             };
+            python = {
+              path = ./templates/python;
+              description = "Python template";
+            };
           };
 
           nixosConfigurations = {
