@@ -7,6 +7,7 @@ _: {
         g = "https://www.google.com";
         ddg = "https://duckduckgo.com";
         gh = "https://github.com";
+        gl = "https://gitlab.com";
         flr = "https://flr.me";
         gb = "https://godbolt.org";
         tr = "https://github.com/trending/rust?since=daily";
