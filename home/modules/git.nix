@@ -23,6 +23,13 @@ _: {
               "https://github.com"
             ];
           };
+          "git@gitlab.com:" = {
+            insteadOf = [
+              "gl:"
+              "gitlab:"
+              "https://gitlab.com"
+            ];
+          };
         };
       };
     };

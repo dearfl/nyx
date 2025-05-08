@@ -15,6 +15,12 @@ _: {
           # identityFile = "/home/flr/.ssh/id_rsa";
           # proxyJump = "aliyun";
         };
+        "gl" = {
+          hostname = "gitlab.com";
+          user = "git";
+          # identityFile = "/home/flr/.ssh/id_rsa";
+          # proxyJump = "aliyun";
+        };
         "router" = {
           hostname = "192.168.8.1";
           user = "root";
