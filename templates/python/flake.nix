@@ -25,8 +25,8 @@
                   python-lsp-server
                 ]
               ))
-              uv
               ruff
+              basedpyright
             ];
           };
       }
