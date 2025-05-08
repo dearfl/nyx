@@ -28,6 +28,7 @@
     "/" = {
       device = "/dev/disk/by-uuid/2326b934-c0f1-4566-8c9e-89cfa14006c3";
       fsType = "btrfs";
+      options = [ "compress=zstd" ];
     };
 
     "/boot" = {
