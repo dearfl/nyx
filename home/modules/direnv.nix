@@ -10,6 +10,7 @@ _: {
           "/home/flr/dev/rust"
           "/home/flr/dev/nyx"
           "/home/flr/dev/python"
+          "/home/flr/dev/cpp"
           "/home/flr/dev/blog"
           "/home/flr/dev/interview"
         ];
