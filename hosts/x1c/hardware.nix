@@ -24,6 +24,7 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/c00f516b-6f21-4aa2-8354-87de3bd22cc2";
