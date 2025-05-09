@@ -1,4 +1,9 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [ inputs.vaultix.nixosModules.default ];
   config = {
@@ -6,50 +11,78 @@
     services.userborn.enable = true;
     # systemd.sysuser.enable = true;
 
-    vaultix = {
-      secrets = {
-        v2ray-uuid = {
-          file = ../../secrets/v2ray-uuid.age;
-        };
-        v2ray-addr = {
-          file = ../../secrets/v2ray-addr.age;
-        };
-        h2-tw = {
-          file = ../../secrets/h2-tw.age;
-          owner = "root";
-          group = "users";
-        };
-      };
-      templates = {
-        v2ray =
-          let
-            mkOutbound =
-              {
-                addr,
-                port,
-                uuid,
-                protocol ? "vmess",
-                encryption ? "chacha20-poly1305",
-              }:
-              {
-                protocol = protocol;
-                settings = {
-                  vnext = [
+    vaultix =
+      let
+        mkOutbound =
+          {
+            addr,
+            port,
+            uuid,
+            protocol ? "vmess",
+            encryption ? "chacha20-poly1305",
+          }:
+          {
+            protocol = protocol;
+            settings = {
+              vnext = [
+                {
+                  address = addr;
+                  port = port;
+                  users = [
                     {
-                      address = addr;
-                      port = port;
-                      users = [
-                        {
-                          encryption = encryption;
-                          id = uuid;
-                        }
-                      ];
+                      encryption = encryption;
+                      id = uuid;
                     }
                   ];
-                };
-              };
-          in
+                }
+              ];
+            };
+          };
+        mkInbound =
           {
+            port,
+            uuid,
+            protocol ? "vmess",
+          }:
+          {
+            listen = "0.0.0.0";
+            port = port;
+            protocol = protocol;
+            settings = {
+              clients = [
+                {
+                  id = uuid;
+                }
+              ];
+            };
+          };
+      in
+      {
+        secrets = {
+          v2ray-uuid = {
+            file = ../../secrets/v2ray-uuid.age;
+          };
+          v2ray-addr = {
+            file = ../../secrets/v2ray-addr.age;
+          };
+          h2-tw = {
+            file = ../../secrets/h2-tw.age;
+            owner = "root";
+            group = "users";
+          };
+          v2-addr = {
+            file = ../../secrets/v2-addr.age;
+          };
+          v2-uuid = {
+            file = ../../secrets/v2-uuid.age;
+          };
+          v2-port = {
+            file = ../../secrets/v2-port.age;
+          };
+        };
+        templates = {
+          v2ray = {
+            mode = "644";
             content = builtins.toJSON {
               inbounds = [
                 {
@@ -71,9 +104,45 @@
                 }
               ];
             };
-            mode = "644";
           };
+
+          v2server = {
+            mode = "644";
+            content = builtins.toJSON {
+              inbounds = map mkInbound [
+                {
+                  uuid = config.vaultix.placeholder.v2-uuid;
+                  port = config.vaultix.placeholder.v2-port;
+                }
+              ];
+              outbounds = [
+                {
+                  protocol = "freedom";
+                }
+              ];
+            };
+          };
+
+          v2client = {
+            mode = "644";
+            content = builtins.toJSON {
+              inbounds = [
+                {
+                  listen = "0.0.0.0";
+                  port = 1080;
+                  protocol = "socks";
+                }
+              ];
+              outbounds = map mkOutbound [
+                {
+                  addr = config.vaultix.placeholder.v2-addr;
+                  uuid = config.vaultix.placeholder.v2-uuid;
+                  port = config.vaultix.placeholder.v2-port;
+                }
+              ];
+            };
+          };
+        };
       };
-    };
   };
 }

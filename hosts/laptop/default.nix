@@ -7,7 +7,7 @@ _: {
     ../optional/proxychains.nix
     ../optional/vaultix.nix
 
-    ../optional/v2ray.nix
+    ../optional/v2client.nix
     ../optional/hysteria.nix
 
     ../optional/systemd-boot.nix
