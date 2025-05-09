@@ -20,13 +20,15 @@
           with pkgs;
           mkShell {
             buildInputs = [
-              (python313.withPackages (
-                ps: with ps; [
-                  python-lsp-server
-                ]
-              ))
+              # (python313.withPackages (
+              #   ps: with ps; [
+              #     python-lsp-server
+              #   ]
+              # ))
+              python3
               ruff
-              basedpyright
+              uv
+              # basedpyright
             ];
           };
       }
