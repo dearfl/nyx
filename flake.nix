@@ -6,6 +6,10 @@
     nixos-hardware = {
       url = "github:nixos/nixos-hardware";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,6 +22,7 @@
       self,
       nixpkgs,
       nixos-hardware,
+      disko,
       flake-parts,
       home-manager,
       ...
@@ -104,6 +109,7 @@
                 modules = [
                   nixos-hardware.nixosModules.common-cpu-intel
                   nixos-hardware.nixosModules.common-pc-laptop-ssd
+
                   ./hosts/x1c
 
                   # home manager
@@ -112,6 +118,28 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.flr = import ./home/users/flr.nix;
+                  }
+                ];
+              }
+            );
+
+            vultr = withSystem "x86_64-linux" (
+              { system, ... }:
+              with inputs.nixpkgs;
+              lib.nixosSystem {
+                inherit system;
+
+                modules = [
+                  disko.nixosModules.disko
+
+                  ./hosts/vultr
+
+                  # home manager
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.flr = import ./home/users/minimal.nix;
                   }
                 ];
               }
