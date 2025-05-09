@@ -2,12 +2,13 @@ _: {
   imports = [
     ./disko.nix
     ./hardware.nix
-    ./vaultix.nix
+    # ./vaultix.nix
+    ../optional/grub.nix
 
-    ../laptop
+    ../minimal
   ];
 
-  networking.hostName = "x1c";
+  networking.hostName = "vultr";
 
   # state version, never change this
   system.stateVersion = "25.05";

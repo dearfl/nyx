@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ../../modules/hysteria.nix
+    # ../../modules/hysteria.nix
 
     ../../users/root.nix
     ../../users/flr.nix
@@ -14,11 +14,11 @@ _: {
 
     ./git.nix
     ./ssh.nix
-    ./proxychains.nix
+    # ./proxychains.nix
 
-    ./vaultix.nix
+    # ./vaultix.nix
 
-    ./v2ray.nix
-    ./hysteria.nix
+    # ./v2ray.nix
+    # ./hysteria.nix
   ];
 }
