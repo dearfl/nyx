@@ -15,6 +15,7 @@ _: {
         cron = "https://crontab.guru";
         "4c" = "https://4chan.org";
         ph = "https://pornhub.com";
+        cf = "https://cloudflare.com";
       };
       searchEngines = {
         DEFAULT = "https://google.com/search?q={}";
