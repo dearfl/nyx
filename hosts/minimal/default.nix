@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ../../users/root.nix
     ../../users/flr.nix
 
     ./packages.nix
