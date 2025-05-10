@@ -43,8 +43,8 @@
 
             decoration = {
               rounding = 4;
-              inactive_opacity = 0.8;
-              active_opacity = 0.95;
+              inactive_opacity = 0.9;
+              active_opacity = 0.98;
             };
 
             master = {
