@@ -1,6 +1,7 @@
 _: {
   config = {
     users.users.flr = {
+      hashedPassword = "$y$j9T$0nCTYi4BXgRzvzIZBzg9J/$oqy.ZZ86kaQ4WWAYFMFFqtQm8Qsf.lr3YVcCwCtopy4";
       isNormalUser = true;
       extraGroups = [
         "wheel"
