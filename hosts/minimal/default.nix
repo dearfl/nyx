@@ -2,6 +2,7 @@ _: {
   imports = [
     ../../modules/hysteria.nix
 
+    ../../users/root.nix
     ../../users/flr.nix
 
     ./packages.nix
