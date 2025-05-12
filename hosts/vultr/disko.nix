@@ -25,7 +25,7 @@ _: {
                 mountOptions = [ "umask=0077" ];
               };
             };
-            plainSwap = {
+            swap = {
               size = "1024M";
               content = {
                 type = "swap";
@@ -37,14 +37,14 @@ _: {
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                # extraArgs = [ "-f" ]; # Override existing partition
+                type = "btrfs";
+                # format = "ext4";
+                extraArgs = [ "-f" ]; # Override existing partition
                 mountpoint = "/";
                 mountOptions = [
-                  # "compress=zstd"
-                  # "noatime"
-                  "defaults"
+                  "compress=zstd"
+                  "noatime"
+                  # "defaults"
                 ];
               };
             };
