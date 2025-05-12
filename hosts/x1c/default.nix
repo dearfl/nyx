@@ -6,6 +6,7 @@ _: {
     ../laptop
   ];
 
+  time.timeZone = "Asia/Shanghai";
   networking.hostName = "x1c";
 
   # state version, never change this
