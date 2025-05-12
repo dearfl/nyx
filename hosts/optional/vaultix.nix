@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }:
 {
@@ -70,14 +69,13 @@
             owner = "root";
             group = "users";
           };
+          # since v2ray's vmess outbound config doesn't support string port
+          # we use a public port here
           v2-addr = {
             file = ../../secrets/v2-addr.age;
           };
           v2-uuid = {
             file = ../../secrets/v2-uuid.age;
-          };
-          v2-port = {
-            file = ../../secrets/v2-port.age;
           };
         };
         templates = {
@@ -112,7 +110,7 @@
               inbounds = map mkInbound [
                 {
                   uuid = config.vaultix.placeholder.v2-uuid;
-                  port = config.vaultix.placeholder.v2-port;
+                  port = 52349;
                 }
               ];
               outbounds = [
@@ -137,7 +135,7 @@
                 {
                   addr = config.vaultix.placeholder.v2-addr;
                   uuid = config.vaultix.placeholder.v2-uuid;
-                  port = config.vaultix.placeholder.v2-port;
+                  port = 52349;
                 }
               ];
             };
