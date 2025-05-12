@@ -3,6 +3,7 @@ _: {
     ./hardware.nix
 
     ../minimal
+    ../optional/nix-mirror.nix
 
     ../optional/systemd-boot.nix
     ../optional/static-web-server.nix
