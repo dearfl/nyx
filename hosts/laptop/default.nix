@@ -17,5 +17,6 @@ _: {
     ../optional/touchpad.nix
 
     ../optional/gui.nix
+    ../optional/nix-mirror.nix
   ];
 }
