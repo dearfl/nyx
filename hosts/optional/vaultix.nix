@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }:
 {
@@ -76,9 +75,6 @@
           v2-uuid = {
             file = ../../secrets/v2-uuid.age;
           };
-          v2-port = {
-            file = ../../secrets/v2-port.age;
-          };
         };
         templates = {
           v2ray = {
@@ -112,7 +108,7 @@
               inbounds = map mkInbound [
                 {
                   uuid = config.vaultix.placeholder.v2-uuid;
-                  port = config.vaultix.placeholder.v2-port;
+                  port = 52349;
                 }
               ];
               outbounds = [
@@ -137,7 +133,7 @@
                 {
                   addr = config.vaultix.placeholder.v2-addr;
                   uuid = config.vaultix.placeholder.v2-uuid;
-                  port = config.vaultix.placeholder.v2-port;
+                  port = 52349;
                 }
               ];
             };
