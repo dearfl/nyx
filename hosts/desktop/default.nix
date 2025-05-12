@@ -6,6 +6,8 @@ _: {
     ../minimal
     ../optional/nix-mirror.nix
 
+    ../optional/vaultix.nix
+
     ../optional/systemd-boot.nix
     ../optional/static-web-server.nix
     ../optional/transmission.nix

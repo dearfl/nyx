@@ -5,6 +5,8 @@ _: {
 
     ../minimal
 
+    ../optional/vaultix.nix
+
     ../optional/wifi.nix
     ../optional/nix-mirror.nix
 
