@@ -12,6 +12,7 @@ _: {
     ../optional/ollama.nix
   ];
 
+  time.timeZone = "Asia/Shanghai";
   networking.hostName = "desktop";
 
   # state version, never change this

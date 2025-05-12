@@ -9,6 +9,7 @@ _: {
     ../optional/rpi.nix
   ];
 
+  time.timeZone = "Asia/Shanghai";
   networking.hostName = "rpi";
 
   # state version, never change this
