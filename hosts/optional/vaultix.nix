@@ -133,6 +133,8 @@
               ];
               outbounds = map mkOutbound [
                 {
+                  # placeholder is a hash256 digest string
+                  # so we could not use it as int type
                   addr = config.vaultix.placeholder.v2-addr;
                   uuid = config.vaultix.placeholder.v2-uuid;
                   port = 52349;
