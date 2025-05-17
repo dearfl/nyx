@@ -86,6 +86,9 @@
                   nixos-hardware.nixosModules.common-cpu-amd
                   nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
                   nixos-hardware.nixosModules.common-pc-ssd
+
+                  disko.nixosModules.disko
+
                   ./hosts/desktop
 
                   # home manager
