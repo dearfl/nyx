@@ -25,31 +25,6 @@
     extraModulePackages = [ ];
   };
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/0b889a54-b93d-43af-9d24-c15f83c88352";
-      fsType = "btrfs";
-      options = [ "compress=zstd" ];
-    };
-    "/data" = {
-      device = "/dev/disk/by-uuid/c1736df6-a7d9-41df-b090-60cfd5357c2b";
-      fsType = "btrfs";
-      options = [ "compress=zstd" ];
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/A158-0FB4";
-      fsType = "vfat";
-      options = [
-        "fmask=0077"
-        "dmask=0077"
-      ];
-    };
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/2a2e1f31-7a24-4cb0-b4da-9eb406b76bce"; }
-  ];
-
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
