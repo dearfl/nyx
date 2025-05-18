@@ -5,7 +5,7 @@ _: {
       settings = {
         terminal.shell = "fish";
         # this font have no korean or japanese variant?
-        font.normal.family = "Fira Code";
+        font.normal.family = "FiraCode Nerd Font Mono";
       };
     };
   };
