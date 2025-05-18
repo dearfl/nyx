@@ -14,6 +14,7 @@
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
         wqy_microhei
+        lxgw-wenkai
       ];
     };
   };
