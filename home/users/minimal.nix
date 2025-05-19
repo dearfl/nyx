@@ -9,6 +9,7 @@ _: {
     ../modules/fish.nix
     ../modules/tmux.nix
     ../modules/direnv.nix
+    ../modules/yazi.nix
   ];
 
   config = {
