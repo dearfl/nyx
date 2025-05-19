@@ -10,7 +10,6 @@
     ];
 
     programs = {
-      yazi.enable = true;
       gitui.enable = true;
       tealdeer.enable = true;
       gh.enable = true;
