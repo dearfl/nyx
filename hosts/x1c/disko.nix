@@ -3,16 +3,11 @@ _: {
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
             # do we need this?
-            # boot = {
-            #   name = "boot";
-            #   size = "1M";
-            #   type = "EF02";
-            # };
             ESP = {
               priority = 1;
               name = "ESP";
@@ -27,7 +22,7 @@ _: {
               };
             };
             swap = {
-              size = "20480M";
+              size = "10240M";
               content = {
                 type = "swap";
                 discardPolicy = "both";
@@ -39,27 +34,6 @@ _: {
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 mountpoint = "/";
-                mountOptions = [
-                  "compress=zstd"
-                  "noatime"
-                ];
-              };
-            };
-          };
-        };
-      };
-      data = {
-        type = "disk";
-        device = "/dev/sda";
-        content = {
-          type = "gpt";
-          partitions = {
-            data = {
-              size = "100%";
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
-                mountpoint = "/data";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"

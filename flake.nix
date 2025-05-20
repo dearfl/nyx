@@ -138,6 +138,8 @@
                   nixos-hardware.nixosModules.common-cpu-intel
                   nixos-hardware.nixosModules.common-pc-laptop-ssd
 
+                  disko.nixosModules.disko
+
                   ./hosts/x1c
 
                   # home manager
