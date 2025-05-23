@@ -79,6 +79,8 @@
                   # we are actually 8th gen, but it should be ok?
                   nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
 
+                  disko.nixosModules.disko
+
                   ./hosts/nyx
 
                   # home manager
