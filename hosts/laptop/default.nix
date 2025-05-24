@@ -8,6 +8,8 @@ _: {
     ../optional/bluetooth.nix
     ../optional/touchpad.nix
 
+    ../optional/chromium.nix
+
     ../optional/gui.nix
     ../optional/nix-mirror.nix
   ];
