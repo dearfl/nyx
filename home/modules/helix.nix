@@ -25,8 +25,10 @@ _: {
       ignores = [
         "target"
         "!.gitignore"
-        "!.github/"
         "!.gitattributes"
+        "!.github/"
+        "!.gitlab/"
+        "!.cargo/"
       ];
       languages = {
         language-server = {
