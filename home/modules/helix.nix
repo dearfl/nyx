@@ -31,6 +31,45 @@ _: {
         "!.cargo/"
       ];
       languages = {
+        language = [
+          {
+            name = "python";
+            scope = "source.python";
+            injection-regex = "python";
+            file-types = [
+              "py"
+              "pyi"
+              "py3"
+              "pyw"
+              ".pythonstartup"
+              ".pythonrc"
+            ];
+            shebangs = [ "python" ];
+            roots = [
+              "."
+              "pyproject.toml"
+              "pyrightconfig.json"
+            ];
+            comment-token = "#";
+            language-servers = [
+              "pyright"
+              "ruff"
+            ];
+            indent = {
+              tab-width = 4;
+              unit = "    ";
+            };
+            auto-format = true;
+            formatter = {
+              command = "black";
+              args = [
+                "-"
+                "--quiet"
+                "--line-length=80"
+              ];
+            };
+          }
+        ];
         language-server = {
           rust-analyzer.config = {
             checkOnSave.command = "clippy";
@@ -47,6 +86,21 @@ _: {
           pylsp.config.pylsp.plugins = {
             ruff.enabled = true;
             black.enabled = true;
+          };
+          pyright = {
+            command = "basedpyright-langserver";
+            args = [ "--stdio" ];
+            config = {
+              reportMissingTypeStubs = false;
+              python.analysis = {
+                typeCheckingMode = "basic";
+                autoImportCompletions = true;
+              };
+            };
+          };
+          ruff = {
+            command = "ruff";
+            config.settings.args = [ ];
           };
         };
       };
