@@ -1,36 +1,36 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     {
       nixpkgs,
-      utils,
+      flake-utils,
       ...
     }:
-    utils.lib.eachDefaultSystem (
+    flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs { inherit system; };
+        python = pkgs.python3; # this is for uv
+        # this is for local nix
+        python' = python.withPackages (p: [
+          p.python-lsp-server
+        ]);
       in
       {
-        devShell =
-          with pkgs;
-          mkShell {
-            buildInputs = [
-              # (python3.withPackages (
-              #   ps: with ps; [
-              #     python-lsp-server
-              #   ]
-              # ))
-              python3
-              ruff
-              uv
-              # basedpyright
-            ];
-          };
+        devShell = pkgs.mkShell {
+          buildInputs = [
+            # we need both python available to mix uv & nix
+            python
+            python'
+            pkgs.ruff
+            pkgs.uv
+            pkgs.basedpyright
+          ];
+        };
       }
     );
 }
