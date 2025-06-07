@@ -1,21 +1,40 @@
 {
   inputs = {
-    naersk.url = "github:nix-community/naersk/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       flake-utils,
+      rust-overlay,
       naersk,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        overlays = [ (import rust-overlay) ];
+        pkgs = import nixpkgs {
+          inherit system overlays;
+        };
+        rust = pkgs.rust-bin.stable.latest.default.override {
+          extensions = [
+            "rust-src"
+            "rustfmt"
+            "clippy"
+            "rust-analyzer"
+          ];
+        };
         naersk' = pkgs.callPackage naersk { };
       in
       {
@@ -23,13 +42,7 @@
         devShell =
           with pkgs;
           mkShell {
-            buildInputs = [
-              cargo
-              rustc
-              rustfmt
-              clippy
-              rust-analyzer
-            ];
+            buildInputs = [ rust ];
           };
       }
     );
