@@ -69,6 +69,11 @@ _: {
               ];
             };
           }
+          {
+            name = "nix";
+            auto-format = true;
+            formatter.command = "nixfmt";
+          }
         ];
         language-server = {
           rust-analyzer.config = {
