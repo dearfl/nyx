@@ -18,6 +18,7 @@
       lsof
       miniserve
       ncdu
+      nixfmt-rfc-style
       rage
       ripgrep
       tmux
