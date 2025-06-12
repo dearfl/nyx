@@ -11,8 +11,8 @@
       windowManager = {
         hyprland = {
           enable = true;
-          systemd.enable = false;
-          # systemd.variables = [ "--all" ];
+          systemd.enable = true;
+          systemd.variables = [ "--all" ];
           settings = {
             monitor = ",preferred,auto,auto";
 
@@ -22,8 +22,8 @@
             "$mod" = "SUPER";
 
             exec-once = [
-              "${pkgs.waybar}/bin/waybar"
-              "${pkgs.copyq}/bin/copyq"
+              # "${pkgs.waybar}/bin/waybar"
+              # "${pkgs.copyq}/bin/copyq"
             ];
 
             # laptop keyboard, we want norman layout
@@ -159,6 +159,7 @@
       # use waybar for now
       waybar = {
         enable = true;
+        systemd.enable = true;
         settings = {
           main = {
             layer = "top";
@@ -491,6 +492,11 @@
             path = "/home/flr/res/images/fav";
           };
         };
+      };
+
+      copyq = {
+        enable = true;
+        forceXWayland = false;
       };
     };
   };
