@@ -54,8 +54,7 @@
             # my main laptop x1 carbon 8th gen
             nyx = withSystem "x86_64-linux" (
               { system, ... }:
-              with inputs.nixpkgs;
-              lib.nixosSystem {
+              nixpkgs.lib.nixosSystem {
                 inherit system;
 
                 modules = [
@@ -80,8 +79,7 @@
             # my main laptop x1 carbon 8th gen
             desktop = withSystem "x86_64-linux" (
               { system, ... }:
-              with inputs.nixpkgs;
-              lib.nixosSystem {
+              nixpkgs.lib.nixosSystem {
                 inherit system;
 
                 modules = [
@@ -107,8 +105,7 @@
             # my old laptop
             x1c = withSystem "x86_64-linux" (
               { system, ... }:
-              with inputs.nixpkgs;
-              lib.nixosSystem {
+              nixpkgs.lib.nixosSystem {
                 inherit system;
 
                 modules = [
@@ -132,8 +129,7 @@
 
             vultr = withSystem "x86_64-linux" (
               { system, ... }:
-              with inputs.nixpkgs;
-              lib.nixosSystem {
+              nixpkgs.lib.nixosSystem {
                 inherit system;
 
                 modules = [
@@ -155,8 +151,7 @@
             # raspberry pi 4b
             rpi = withSystem "aarch64-linux" (
               { system, ... }:
-              with inputs.nixpkgs;
-              lib.nixosSystem {
+              nixpkgs.lib.nixosSystem {
                 inherit system;
 
                 modules = [
