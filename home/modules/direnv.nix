@@ -13,6 +13,7 @@ _: {
           "/home/flr/dev/cpp"
           "/home/flr/dev/blog"
           "/home/flr/dev/interview"
+          "/home/flr/dev/misc"
         ];
       };
     };
