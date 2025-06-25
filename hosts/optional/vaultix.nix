@@ -130,6 +130,11 @@
                   port = 1080;
                   protocol = "socks";
                 }
+                {
+                  listen = "0.0.0.0";
+                  port = 8080;
+                  protocol = "http";
+                }
               ];
               outbounds = map mkOutbound [
                 {
