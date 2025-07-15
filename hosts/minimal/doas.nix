@@ -5,7 +5,12 @@ let
     keepEnv = true;
     persist = true;
     setEnv = [
+      # for some git operation
       "SUDO_UID=${toString config.users.users.${user}.uid}"
+
+      # the following envvar should be unset when use doas
+      # so root user won't leave files in our home directory
+      # or maybe we should consider unset keepenv?
       "-HOME"
       "-GTK_PATH"
       "-INFOPATH"
