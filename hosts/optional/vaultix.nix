@@ -85,12 +85,12 @@
               inbounds = [
                 {
                   listen = "0.0.0.0";
-                  port = 1080;
+                  port = 1082;
                   protocol = "socks";
                 }
                 {
                   listen = "0.0.0.0";
-                  port = 8080;
+                  port = 8082;
                   protocol = "http";
                 }
               ];
