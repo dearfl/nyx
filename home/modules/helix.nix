@@ -78,7 +78,7 @@ _: {
         language-server = {
           rust-analyzer.config = {
             checkOnSave.command = "clippy";
-            cargo.allFeatures = true;
+            cargo.allFeatures = false;
             inlayHints = {
               bindingModeHints.enable = true;
               closingBraceHints.minLines = 10;
