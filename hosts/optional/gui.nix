@@ -2,6 +2,7 @@ _: {
   imports = [
     ./fonts.nix
     ./sound.nix
-    ./hyprland.nix
+    # ./hyprland.nix
+    ./plasma.nix
   ];
 }

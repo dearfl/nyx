@@ -12,7 +12,7 @@
           pkgs.fcitx5-tokyonight
           pkgs.libsForQt5.fcitx5-qt
         ];
-        waylandFrontend = true;
+        # waylandFrontend = true;
       };
     };
   };
