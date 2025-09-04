@@ -10,6 +10,7 @@
       pkgs.slurp
       pkgs.grim
       pkgs.imv
+      pkgs.vial
     ];
 
     programs = {
