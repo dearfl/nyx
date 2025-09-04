@@ -7,7 +7,7 @@ _: {
     ../modules/fontconfig.nix
 
     ../modules/alacritty.nix
-    ../modules/hyprland.nix
+    # ../modules/hyprland.nix
     ../modules/qutebrowser.nix
     ../modules/dunst.nix
     ../modules/fcitx5.nix

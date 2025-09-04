@@ -68,43 +68,42 @@
               enabled = false;
             };
 
-            bind =
-              [
-                "$mod, Return, exec, $terminal"
-                "$mod, S, exec, ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -"
-                "$mod, P, exec, $menu"
-                "$mod, Q, killactive"
-                "$mod, Space, togglefloating"
-                "$mod, F, fullscreen"
-                "$mod, K, layoutmsg, cycleprev"
-                "$mod, J, layoutmsg, cyclenext"
-                "$mod, G, layoutmsg, swapprev"
-                "$mod, Y, layoutmsg, swapnext"
-                "$mod, A, layoutmsg, swapwithmaster"
-                "$mod, R, layoutmsg, orientationright"
-                # not working
-                "$mod, H, layoutmsg, mfact, -0.2"
-                "$mod, L, layoutmsg, mfact, +0.2"
-                "$mod SHIFT, Q, exit"
-                "$mod, M, togglespecialworkspace, magic"
-                "$mod SHIFT, M, movetoworkspace, special:magic"
-              ]
-              ++ (
-                # workspaces
-                # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-                let
-                  mkWorkspaceRule =
-                    idx:
-                    let
-                      ws = toString (idx + 1);
-                    in
-                    [
-                      "$mod, ${ws}, workspace, ${ws}"
-                      "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
-                    ];
-                in
-                builtins.concatLists (builtins.genList mkWorkspaceRule 9)
-              );
+            bind = [
+              "$mod, Return, exec, $terminal"
+              "$mod, S, exec, ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -"
+              "$mod, P, exec, $menu"
+              "$mod, Q, killactive"
+              "$mod, Space, togglefloating"
+              "$mod, F, fullscreen"
+              "$mod, K, layoutmsg, cycleprev"
+              "$mod, J, layoutmsg, cyclenext"
+              "$mod, G, layoutmsg, swapprev"
+              "$mod, Y, layoutmsg, swapnext"
+              "$mod, A, layoutmsg, swapwithmaster"
+              "$mod, R, layoutmsg, orientationright"
+              # not working
+              "$mod, H, layoutmsg, mfact, -0.2"
+              "$mod, L, layoutmsg, mfact, +0.2"
+              "$mod SHIFT, Q, exit"
+              "$mod, M, togglespecialworkspace, magic"
+              "$mod SHIFT, M, movetoworkspace, special:magic"
+            ]
+            ++ (
+              # workspaces
+              # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+              let
+                mkWorkspaceRule =
+                  idx:
+                  let
+                    ws = toString (idx + 1);
+                  in
+                  [
+                    "$mod, ${ws}, workspace, ${ws}"
+                    "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
+                  ];
+              in
+              builtins.concatLists (builtins.genList mkWorkspaceRule 9)
+            );
 
             windowrulev2 = [
               "suppressevent maximize, class:.*"
