@@ -48,6 +48,10 @@
               path = ./templates/python;
               description = "Python template";
             };
+            cpp = {
+              path = ./templates/cpp;
+              description = "C++ template with CMake";
+            };
           };
 
           nixosConfigurations = {
