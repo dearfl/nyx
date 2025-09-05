@@ -29,6 +29,7 @@ _: {
         "!.github/"
         "!.gitlab/"
         "!.cargo/"
+        "!.clang-*"
       ];
       languages = {
         language = [
