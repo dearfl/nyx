@@ -4,8 +4,13 @@ _: {
       enable = true;
 
       matchBlocks = {
-        "aliyun" = {
-          hostname = "a.flr.me";
+        # "aliyun" = {
+        #   hostname = "a.flr.me";
+        #   user = "flr";
+        #   # identityFile = "/home/flr/.ssh/id_rsa";
+        # };
+        "vultr" = {
+          hostname = "v.flr.me";
           user = "flr";
           # identityFile = "/home/flr/.ssh/id_rsa";
         };
@@ -13,7 +18,7 @@ _: {
           hostname = "github.com";
           user = "git";
           # identityFile = "/home/flr/.ssh/id_rsa";
-          # proxyJump = "aliyun";
+          proxyJump = "vultr";
         };
         "gl" = {
           hostname = "gitlab.com";
