@@ -16,6 +16,7 @@ _: {
           space.space = "file_picker";
           space.w = ":w";
           space.q = ":q";
+          space.i = ":sh git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
           esc = [
             "collapse_selection"
             "keep_primary_selection"
