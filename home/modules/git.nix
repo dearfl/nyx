@@ -11,6 +11,17 @@ _: {
       difftastic = {
         enable = true;
       };
+      includes = [
+        {
+          contents = {
+            user = {
+              name = "zhongsanming";
+              email = "zhongsanming@innomix.com";
+            };
+          };
+          condition = "gitdir:~/work/wzkj";
+        }
+      ];
       extraConfig = {
         init = {
           defaultBranch = "main";
