@@ -19,7 +19,7 @@ _: {
               email = "zhongsanming@innomix.com";
             };
           };
-          condition = "gitdir:~/work/wzkj";
+          condition = "gitdir:~/work/wzkj/";
         }
       ];
       extraConfig = {
