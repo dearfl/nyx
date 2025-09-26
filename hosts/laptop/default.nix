@@ -8,7 +8,7 @@ _: {
     ../optional/vaultix.nix
 
     ../optional/v2client.nix
-    ../optional/hysteria.nix
+    # ../optional/hysteria.nix
 
     ../optional/systemd-boot.nix
     ../optional/wifi.nix
