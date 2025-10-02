@@ -15,6 +15,7 @@ _: {
 
     ../optional/cuda.nix
     ../optional/ollama.nix
+    ../optional/emulation.nix
   ];
 
   time.timeZone = "Asia/Shanghai";
