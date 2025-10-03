@@ -20,6 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
   };
 
   outputs =
@@ -31,6 +32,7 @@
       flake-parts,
       vaultix,
       home-manager,
+      nixos-raspberrypi,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -185,17 +187,32 @@
             # raspberry pi 4b
             rpi = withSystem "aarch64-linux" (
               { system, ... }:
-              nixpkgs.lib.nixosSystem {
+              nixos-raspberrypi.lib.nixosSystem {
                 inherit system;
 
-                # vaultix need this
                 specialArgs = {
                   inherit inputs;
                 };
                 modules = [
-                  nixos-hardware.nixosModules.raspberry-pi-4
+                  disko.nixosModules.disko
+
+                  (
+                    { nixos-raspberrypi, ... }:
+                    {
+                      imports = with nixos-raspberrypi.nixosModules; [
+                        # Hardware configuration
+                        raspberry-pi-4.base
+                        raspberry-pi-4.display-vc4
+                        raspberry-pi-4.bluetooth
+                      ];
+                    }
+                  )
 
                   ./hosts/rpi
+
+                  {
+                    boot.tmp.useTmpfs = true;
+                  }
 
                   # home manager
                   home-manager.nixosModules.home-manager

@@ -2,10 +2,12 @@ _: {
   imports = [
     ./hardware.nix
     ./vaultix.nix
+    ./disko.nix
+    ./common.nix
 
     ../minimal
 
-    ../optional/vaultix.nix
+    # ../optional/vaultix.nix
 
     ../optional/wifi.nix
     ../optional/nix-mirror.nix
