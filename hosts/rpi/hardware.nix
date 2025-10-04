@@ -1,20 +1,22 @@
-{ lib, modulesPath, ... }:
+{
+  lib,
+  modulesPath,
+  nixos-raspberrypi,
+  ...
+}:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    # Hardware configuration
+    nixos-raspberrypi.nixosModules.raspberry-pi-4.base
+    nixos-raspberrypi.nixosModules.raspberry-pi-4.display-vc4
+    nixos-raspberrypi.nixosModules.raspberry-pi-4.bluetooth
   ];
 
   boot.initrd.availableKernelModules = [ ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "bcm2835-v4l2" ];
   boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
-    fsType = "ext4";
-  };
-
-  swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
 

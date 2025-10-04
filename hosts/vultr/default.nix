@@ -9,6 +9,8 @@ _: {
     ../optional/vaultix.nix
     ../optional/v2server.nix
 
+    ../optional/nix-opinionated.nix
+
     ../minimal
   ];
 
