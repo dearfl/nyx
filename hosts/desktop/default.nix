@@ -5,6 +5,7 @@ _: {
 
     ../minimal
     ../optional/nix-mirror.nix
+    ../optional/nix-opinionated.nix
 
     ../optional/systemd-boot.nix
     ../optional/static-web-server.nix

@@ -5,6 +5,8 @@ _: {
 
     ../optional/grub.nix
 
+    ../optional/nix-opinionated.nix
+
     ../minimal
   ];
 

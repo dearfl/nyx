@@ -1,6 +1,8 @@
 _: {
   imports = [
     ./hardware.nix
+    ./disko.nix
+    ./common.nix
 
     ../minimal
 
