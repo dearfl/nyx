@@ -6,6 +6,7 @@ _: {
 
     ../minimal
     ../optional/nix-mirror.nix
+    ../optional/nix-opinionated.nix
 
     ../optional/vaultix.nix
 

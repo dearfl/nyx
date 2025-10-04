@@ -191,31 +191,16 @@
                 inherit system;
 
                 specialArgs = {
-                  inherit inputs;
+                  inherit inputs nixos-raspberrypi;
                 };
                 modules = [
                   disko.nixosModules.disko
 
-                  (
-                    { nixos-raspberrypi, ... }:
-                    {
-                      imports = with nixos-raspberrypi.nixosModules; [
-                        # Hardware configuration
-                        raspberry-pi-4.base
-                        raspberry-pi-4.display-vc4
-                        raspberry-pi-4.bluetooth
-                      ];
-                    }
-                  )
-
                   ./hosts/rpi
-
-                  {
-                    boot.tmp.useTmpfs = true;
-                  }
 
                   # home manager
                   home-manager.nixosModules.home-manager
+
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;

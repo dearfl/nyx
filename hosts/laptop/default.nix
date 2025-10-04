@@ -20,5 +20,6 @@ _: {
 
     ../optional/gui.nix
     ../optional/nix-mirror.nix
+    ../optional/nix-opinionated.nix
   ];
 }

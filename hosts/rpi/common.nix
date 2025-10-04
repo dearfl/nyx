@@ -17,4 +17,6 @@
       cfg.bootloader
       config.boot.kernelPackages.kernel.version
     ];
+
+  boot.tmp.useTmpfs = true;
 }
