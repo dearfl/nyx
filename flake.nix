@@ -20,7 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+    nixos-raspberrypi = {
+      url = "github:nvmd/nixos-raspberrypi/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
