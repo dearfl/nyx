@@ -9,8 +9,8 @@ _: {
           pskRaw = "513ce170f82b9f9bba9a5a9ddc5db9a62a26903dc9eaed7e9059502c6169440a";
           priority = 1000;
         };
-        "WZKJ" = {
-          pskRaw = "682fa633b86b1b6fadd82215a5a840cb55c85c59a9c4047d96408268adc31c31";
+        "DWTX" = {
+          pskRaw = "beafe4e57d20dde127d6bc4f761d922c5d256a5dd5d84f72e832451934cc0e84";
           priority = 100;
         };
       };
