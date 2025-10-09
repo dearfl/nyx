@@ -16,6 +16,8 @@ _: {
         "4c" = "https://4chan.org";
         ph = "https://pornhub.com";
         cf = "https://cloudflare.com";
+        lc = "https://leetcode.com";
+        lcr = "https://leetcode.com/problems/random-one-question/all";
       };
       searchEngines = {
         DEFAULT = "https://google.com/search?q={}";
