@@ -7,6 +7,8 @@ _: {
     ../laptop
   ];
 
+  programs.adb.enable = true;
+
   time.timeZone = "Asia/Shanghai";
   networking.hostName = "nyx";
 
