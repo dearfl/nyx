@@ -14,7 +14,7 @@ jobs:
         with:
           branch: wzkj
 
-  rebase-wzkj:
+  rebase-x11:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
