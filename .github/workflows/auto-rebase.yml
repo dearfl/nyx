@@ -5,7 +5,7 @@ on:
     branches:
       - main
 jobs:
-  rebase:
+  rebase-x11:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -13,3 +13,13 @@ jobs:
         uses: dearfl/rebase@v1
         with:
           branch: x11
+
+  rebase-wzkj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Auto Rebase wzkj
+        uses: dearfl/rebase@v1
+        with:
+          base: x11
+          branch: wzkj
