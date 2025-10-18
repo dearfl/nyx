@@ -82,7 +82,7 @@
               }
             );
 
-            # my main laptop x1 carbon 8th gen
+            # my high end desktop machine
             desktop = withSystem "x86_64-linux" (
               { system, ... }:
               nixpkgs.lib.nixosSystem {
