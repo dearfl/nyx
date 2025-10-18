@@ -9,7 +9,6 @@ _: {
     ./nix.nix
     ./firewall.nix
     ./doas.nix
-    # ./dns.nix
 
     ./git.nix
     ./ssh.nix
