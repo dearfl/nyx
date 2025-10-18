@@ -19,6 +19,11 @@
           "flakes"
         ];
         auto-optimise-store = true;
+        trusted-users = [
+          "root"
+          "flr"
+          "@wheel"
+        ];
       };
     };
   };
