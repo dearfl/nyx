@@ -2,13 +2,15 @@ _: {
   imports = [
     ./disko.nix
     ./hardware.nix
-    ./vaultix.nix
+    # ./vaultix.nix
 
-    ../laptop
+    ../x11
   ];
 
   time.timeZone = "Asia/Shanghai";
   networking.hostName = "x1c";
+
+  nixpkgs.config.allowUnfree = true;
 
   # state version, never change this
   system.stateVersion = "25.05";
