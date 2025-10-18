@@ -7,6 +7,9 @@ _: {
     ../modules/fontconfig.nix
 
     ../modules/alacritty.nix
+    ../modules/cursor.nix
+    ../modules/wpaperd.nix
+    ../modules/copyq.nix
     ../modules/qutebrowser.nix
     ../modules/dunst.nix
     ../modules/fcitx5.nix
