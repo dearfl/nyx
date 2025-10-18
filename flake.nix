@@ -51,7 +51,14 @@
           vaultix = {
             # vaultix configs
             # we don't use vaultix in rpi config
-            nodes = nixpkgs.lib.filterAttrs (name: _: name != "rpi") self.nixosConfigurations;
+            nodes = nixpkgs.lib.filterAttrs (
+              name: _:
+              builtins.elem name [
+                "nyx"
+                "desktop"
+                "vultr"
+              ]
+            ) self.nixosConfigurations;
             identity = "./secrets/key.txt";
           };
 
