@@ -10,6 +10,7 @@ _: {
     ../modules/cursor.nix
     ../modules/wpaperd.nix
     ../modules/copyq.nix
+    ../modules/x11.nix
     ../modules/qutebrowser.nix
     ../modules/dunst.nix
     ../modules/fcitx5.nix
