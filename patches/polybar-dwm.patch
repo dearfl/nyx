@@ -1,0 +1,7 @@
+diff --git a/lib/xpp b/lib/xpp
+index 044e69d0..2f9ff5af 160000
+--- a/lib/xpp
++++ b/lib/xpp
+@@ -1 +1 @@
+-Subproject commit 044e69d05db7f89339bda1ccd1efe0263b01c8f6
++Subproject commit 2f9ff5afc28f67f1dc24898e99a2d4ccf443e512
