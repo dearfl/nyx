@@ -20,7 +20,7 @@
 
     ../optional/fonts.nix
     ../optional/sound.nix
-    ../optional/plasma.nix
+    ../optional/x11.nix
     ../optional/nix-mirror.nix
     ../optional/nix-opinionated.nix
   ];
