@@ -8,7 +8,6 @@ _: {
 
     ../modules/alacritty.nix
     ../modules/cursor.nix
-    ../modules/wpaperd.nix
     ../modules/copyq.nix
     ../modules/x11.nix
     ../modules/qutebrowser.nix
