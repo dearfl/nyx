@@ -79,6 +79,10 @@
               path = ./templates/cpp;
               description = "C++ template with CMake";
             };
+            typst = {
+              path = ./templates/typst;
+              description = "typst template";
+            };
           };
 
           nixosConfigurations = {
