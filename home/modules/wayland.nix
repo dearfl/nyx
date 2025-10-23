@@ -35,16 +35,16 @@
             ];
 
             general = {
-              gaps_in = 5;
-              gaps_out = 10;
+              gaps_in = 2;
+              gaps_out = 4;
               border_size = 2;
               layout = "master";
             };
 
             decoration = {
-              rounding = 4;
-              inactive_opacity = 0.9;
-              active_opacity = 0.98;
+              rounding = 2;
+              inactive_opacity = 0.94;
+              active_opacity = 1.0;
             };
 
             master = {
