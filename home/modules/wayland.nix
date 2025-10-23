@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./waybar.nix
+  ];
   config = {
     wayland = {
       windowManager = {
@@ -146,117 +149,6 @@
               shadow_passes = 2;
             }
           ];
-        };
-      };
-
-      # use waybar for now
-      waybar = {
-        enable = true;
-        systemd.enable = true;
-        settings = {
-          main = {
-            layer = "top";
-            position = "top";
-
-            modules-left = [
-              "clock"
-              "hyprland/workspaces"
-            ];
-            modules-right = [
-              "network"
-              "cpu"
-              "memory"
-              "battery"
-              "idle_inhibitor"
-              "group/traydrawer"
-            ];
-
-            "group/traydrawer" = {
-              orientation = "inherit";
-              modules = [
-                "custom/left-icon"
-                "tray"
-              ];
-              drawer = {
-                transition-duration = 500;
-                children-class = "traydrawer-child";
-                transition-left-to-right = false;
-              };
-            };
-
-            "custom/left-icon" = {
-              tooltip = false;
-              format = "";
-            };
-
-            clock = {
-              interval = 1;
-              format = "{:%R  %A %b %d}";
-              tooltip = true;
-              tooltip-format = "<tt>{calendar}</tt>";
-            };
-
-            memory = {
-              interval = 1;
-              format = "󰍛 {percentage:02}%";
-              states = {
-                warning = 85;
-              };
-            };
-
-            cpu = {
-              interval = 1;
-              format = "󰻠 {usage:02}%";
-              states = {
-                warning = 95;
-              };
-            };
-
-            network = {
-              format-disconnected = "󰯡 Disconnected";
-              format-ethernet = "󰒢 Connected!";
-              format-linked = "󰖪 {essid} (No IP)";
-              format-wifi = "󰖩  {essid}";
-              interval = 1;
-              tooltip = false;
-            };
-
-            tray = {
-              icon-size = 14;
-              # show-passive-items = true;
-              spacing = 5;
-            };
-
-            battery = {
-              interval = 10;
-              full-at = 99;
-              states = {
-                "good" = 90;
-                "warning" = 30;
-                "critical" = 15;
-              };
-              format = "{icon}   {capacity}%";
-              format-charging = "󱐋 {capacity}%";
-              format-plugged = " {capacity}%";
-              # format-full = ""; // An empty format will hide the module
-              format-icons = [
-                ""
-                ""
-                ""
-                ""
-                ""
-              ];
-              tooltip = false;
-            };
-
-            idle_inhibitor = {
-              format = "{icon}";
-              format-icons = {
-                activated = "󰒳";
-                deactivated = "󰒲";
-              };
-            };
-          };
         };
       };
 
