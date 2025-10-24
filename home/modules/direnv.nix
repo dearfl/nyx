@@ -14,6 +14,7 @@ _: {
           "/home/flr/dev/blog"
           "/home/flr/dev/interview"
           "/home/flr/dev/misc"
+          "/home/flr/dev/open-source"
         ];
       };
     };
