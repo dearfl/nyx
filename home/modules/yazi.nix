@@ -2,7 +2,7 @@ _: {
   config = {
     programs.yazi = {
       enable = true;
-      settings.manager.show_hidden = true;
+      settings.mgr.show_hidden = true;
     };
   };
 }
