@@ -2,7 +2,7 @@ _: {
   config = {
     vaultix = {
       settings = {
-        hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILTcAcsgr6D0QU77oD5QXVZ1htU2jmbLvv1pyUp2wGgT";
+        hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIP8Je+ds47siDRtiHhT6ko/SwnX+2reYv+A/B8GwZrY";
       };
     };
   };
