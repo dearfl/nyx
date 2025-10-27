@@ -24,7 +24,7 @@ _: {
           };
         };
         swap = {
-          size = "1024M";
+          size = "2048M";
           content = {
             type = "swap";
             discardPolicy = "both";
