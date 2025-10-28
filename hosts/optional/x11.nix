@@ -10,7 +10,7 @@
       };
       windowManager.dwm = {
         enable = true;
-        package = pkgs.dwm.overrideAttrs (oldAttrs: rec {
+        package = pkgs.dwm.overrideAttrs (oldAttrs: {
           patches = [
             (pkgs.fetchpatch {
               url = "https://gist.githubusercontent.com/dearfl/cebdfa172fa7cd81a59bb844f2f33e2b/raw/4c49599f47fdefd9179105f432676980e1720a5f/dwm.patch";
