@@ -7,7 +7,7 @@ _: {
     ../minimal
 
     ../optional/wifi.nix
-    ../optional/nix-mirror.nix
+    # ../optional/nix-mirror.nix
 
     ../optional/rpi.nix
   ];

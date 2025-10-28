@@ -19,7 +19,7 @@ _: {
     ../optional/chromium.nix
 
     ../optional/gui.nix
-    ../optional/nix-mirror.nix
+    # ../optional/nix-mirror.nix
     ../optional/nix-opinionated.nix
   ];
 }
