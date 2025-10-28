@@ -4,7 +4,7 @@ _: {
     ./hardware.nix
 
     ../minimal
-    ../optional/nix-mirror.nix
+    # ../optional/nix-mirror.nix
     ../optional/nix-opinionated.nix
 
     ../optional/systemd-boot.nix

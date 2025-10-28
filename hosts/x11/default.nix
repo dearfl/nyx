@@ -14,7 +14,7 @@
     ../optional/fonts.nix
     ../optional/sound.nix
     ../optional/x11.nix
-    ../optional/nix-mirror.nix
+    # ../optional/nix-mirror.nix
     ../optional/nix-opinionated.nix
   ];
 
