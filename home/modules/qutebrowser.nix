@@ -28,6 +28,7 @@ _: {
         nw = "https://wiki.nixos.org/wiki/{}";
         no = "https://search.nixos.org/options?channel=unstable&query={}";
         ho = "https://home-manager-options.extranix.com/?query={}";
+        ns = "https://search.nüschtos.de/?query={}";
         g = "https://www.google.com/search?hl=en&q={}";
         r = "https://doc.rust-lang.org/stable/std/?search={}";
         c = "https://en.cppreference.com/w/cpp/keyword/{}";
