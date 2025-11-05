@@ -132,6 +132,10 @@ _: {
             color: #444444;
           }
 
+          #workspaces button.urgent {
+            background: #cc241d;
+          }
+
           #clock {
             padding: 1px 6px;
             margin: 1px 10px;
