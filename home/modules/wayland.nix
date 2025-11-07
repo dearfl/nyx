@@ -11,7 +11,11 @@
           systemd.enable = true;
           systemd.variables = [ "--all" ];
           settings = {
-            monitor = ",preferred,auto,auto";
+            monitor = [
+              # ",preferred,auto,auto"
+              "eDP-1, 2560x1440@60, 2560x0, auto"
+              "HDMI-A-1, 2560x1440@60, 0x0, auto"
+            ];
 
             # maybe we should replace binary paths?
             "$terminal" = "${pkgs.alacritty}/bin/alacritty";
