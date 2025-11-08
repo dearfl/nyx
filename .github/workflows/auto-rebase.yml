@@ -1,0 +1,16 @@
+name: Auto Rebase main Branch
+
+on:
+  push:
+    branches:
+      - plain
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Auto Rebase main
+        uses: dearfl/rebase@main
+        with:
+          base: plain
+          branch: main
