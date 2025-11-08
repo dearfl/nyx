@@ -103,7 +103,6 @@ _: {
 
           window#waybar {
             background: #222222;
-            color: #dfdfdf;
           }
 
           #window {
@@ -120,11 +119,15 @@ _: {
           #workspaces button {
             padding: 1px 2px;
             margin: 1px 1px;
-            color: #dfdfdf;
+            color: #444444;
             border-bottom: 2px solid transparent;
           }
 
-          #workspaces button.active {
+          #workspaces button.hosting-monitor {
+            color: #dfdfdf;
+          }
+
+          #workspaces button.active.hosting-monitor {
             border-bottom: 2px solid #d65d0e;
           }
 
