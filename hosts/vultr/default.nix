@@ -8,6 +8,8 @@ _: {
     ../optional/nix-opinionated.nix
 
     ../minimal
+
+    ./secret.nix
   ];
 
   time.timeZone = "America/New_York";
