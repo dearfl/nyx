@@ -6,6 +6,8 @@ _: {
     ../optional/emulation.nix
 
     ../laptop
+
+    ./secret.nix
   ];
 
   time.timeZone = "Asia/Shanghai";

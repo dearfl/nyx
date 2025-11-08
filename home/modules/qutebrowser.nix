@@ -93,6 +93,12 @@ _: {
           };
         };
       };
+      keyBindings = {
+        normal = {
+          "<Ctrl-l>" = "config-cycle content.proxy socks5://localhost:1080 none";
+          "zz" = "hint links spawn yt-dlp -P ~/res/downloads --proxy socks5://localhost:1080 {hint-url}";
+        };
+      };
     };
   };
 }

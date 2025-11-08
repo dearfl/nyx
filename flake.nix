@@ -15,6 +15,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vaultix = {
+      url = "github:milieuim/vaultix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
     nixos-raspberrypi = {
       url = "github:nvmd/nixos-raspberrypi/main";
     };
@@ -22,10 +27,12 @@
 
   outputs =
     inputs@{
+      self,
       nixpkgs,
       nixos-hardware,
       disko,
       flake-parts,
+      vaultix,
       home-manager,
       nixos-raspberrypi,
       ...
@@ -34,10 +41,25 @@
       { withSystem, ... }:
       {
         imports = [
+          # renc need this
+          vaultix.flakeModules.default
           home-manager.flakeModules.default
           flake-parts.flakeModules.easyOverlay
         ];
         flake = {
+          vaultix = {
+            # vaultix configs
+            # we only decrypt on nyx and vultr
+            nodes = nixpkgs.lib.filterAttrs (
+              name: _:
+              builtins.elem name [
+                "nyx"
+                "vultr"
+              ]
+            ) self.nixosConfigurations;
+            identity = "./secrets/key.txt";
+          };
+
           templates = {
             rust = {
               path = ./templates/rust;
@@ -68,6 +90,7 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                # vaultix & home-manager need this
                 specialArgs = {
                   inherit inputs;
                 };
@@ -96,6 +119,7 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                # vaultix & home-manager need this
                 specialArgs = {
                   inherit inputs;
                 };
@@ -125,6 +149,7 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                # vaultix & home-manager need this
                 specialArgs = {
                   inherit inputs;
                 };
@@ -152,6 +177,7 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                # vaultix & home-manager need this
                 specialArgs = {
                   inherit inputs;
                 };
@@ -177,6 +203,7 @@
               nixos-raspberrypi.lib.nixosSystem {
                 inherit system;
 
+                # vaultix & home-manager need this
                 specialArgs = {
                   inherit inputs nixos-raspberrypi;
                 };
