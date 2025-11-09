@@ -1,7 +1,9 @@
-_: {
+{ pkgs, ... }:
+{
   config = {
     services.transmission = {
       enable = true;
+      package = pkgs.transmission_4;
       user = "flr";
       group = "users";
       home = "/data/transmission";
