@@ -1,7 +1,6 @@
 _: {
   config = {
     programs = {
-      # use waybar for now
       waybar = {
         enable = true;
         systemd.enable = true;

@@ -71,44 +71,45 @@
               enabled = false;
             };
 
-            bind = [
-              "$mod, Return, exec, $terminal"
-              "$mod, S, exec, $screenshot"
-              "$mod, P, exec, $menu"
-              "$mod, Q, killactive"
-              "$mod, Space, togglefloating"
-              "$mod, F, fullscreen"
-              "$mod, K, layoutmsg, cycleprev"
-              "$mod, J, layoutmsg, cyclenext"
-              "$mod, G, layoutmsg, swapprev"
-              "$mod, Y, layoutmsg, swapnext"
-              "$mod, A, layoutmsg, swapwithmaster"
-              "$mod, R, layoutmsg, orientationright"
-              # not working
-              # "$mod, H, layoutmsg, mfact, -0.2"
-              # "$mod, L, layoutmsg, mfact, +0.2"
-              "$mod SHIFT, Q, exit"
-              "$mod, M, togglespecialworkspace, magic"
-              "$mod SHIFT, M, movetoworkspace, special:magic"
-              "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
-              "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
-            ]
-            ++ (
-              # workspaces
-              # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-              let
-                mkWorkspaceRule =
-                  idx:
-                  let
-                    ws = toString (idx + 1);
-                  in
-                  [
-                    "$mod, ${ws}, workspace, ${ws}"
-                    "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
-                  ];
-              in
-              builtins.concatLists (builtins.genList mkWorkspaceRule 9)
-            );
+            bind =
+              [
+                "$mod, Return, exec, $terminal"
+                "$mod, S, exec, $screenshot"
+                "$mod, P, exec, $menu"
+                "$mod, Q, killactive"
+                "$mod, Space, togglefloating"
+                "$mod, F, fullscreen"
+                "$mod, K, layoutmsg, cycleprev"
+                "$mod, J, layoutmsg, cyclenext"
+                "$mod, G, layoutmsg, swapprev"
+                "$mod, Y, layoutmsg, swapnext"
+                "$mod, A, layoutmsg, swapwithmaster"
+                "$mod, R, layoutmsg, orientationright"
+                # not working
+                # "$mod, H, layoutmsg, mfact, -0.2"
+                # "$mod, L, layoutmsg, mfact, +0.2"
+                "$mod SHIFT, Q, exit"
+                "$mod, M, togglespecialworkspace, magic"
+                "$mod SHIFT, M, movetoworkspace, special:magic"
+                "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
+                "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
+              ]
+              ++ (
+                # workspaces
+                # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+                let
+                  mkWorkspaceRule =
+                    idx:
+                    let
+                      ws = toString (idx + 1);
+                    in
+                    [
+                      "$mod, ${ws}, workspace, ${ws}"
+                      "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
+                    ];
+                in
+                builtins.concatLists (builtins.genList mkWorkspaceRule 9)
+              );
 
             windowrulev2 = [
               "suppressevent maximize, class:.*"
@@ -159,192 +160,6 @@
           ];
         };
       };
-
-      # we want some bar
-      #   yambar =
-      #     let
-      #       mkDeco = color: {
-      #         stack = [
-      #           {
-      #             underline = {
-      #               inherit color;
-      #               size = 3;
-      #             };
-      #           }
-      #         ];
-      #       };
-      #     in
-      #     {
-      #       enable = true;
-      #       settings = {
-      #         bar = {
-      #           location = "bottom";
-      #           height = 32;
-      #           background = "222222ff";
-      #           foreground = "dfdfdfff";
-      #           font = "Noto Sans Mono:size=14";
-      #           spacing = 8;
-      #           margin = 16;
-
-      #           left = [
-      #             {
-      #               clock = {
-      #                 date-format = "%a %d";
-      #                 time-format = "%H:%M";
-      #                 content = [
-      #                   {
-      #                     string = {
-      #                       text = "{date} {time}";
-      #                       deco = mkDeco "458588ff";
-      #                     };
-      #                   }
-      #                 ];
-      #               };
-      #             }
-
-      #             # TODO: workspaces
-      #             # this is not working right now, pinging might be able to help
-      #             # update this when yambar-hyprland-wses updates
-      #             # {
-      #             #   script = {
-      #             #     path = "${pkgs.yambar-hyprland-wses}/bin/yambar-hyprland-wses";
-      #             #     content.list = {
-      #             #       spacing = 6;
-      #             #       items =
-      #             #         let
-      #             #           mkWorkspaceRule = i: {
-      #             #             map =
-      #             #             let
-      #             #               ws = builtins.toString (i + 1);
-      #             #               count = i + 2;
-      #             #             in
-      #             #             {
-      #             #               default = { string = { text = ws; foreground = "bbbbbbff"; }; };
-      #             #               conditions = {
-      #             #                 "workspace_count < ${builtins.toString count}" = { empty = {}; };
-      #             #                 "workspace_${ws}_focused" = { string = { text = ws; foreground = "fba922ff"; }; };
-      #             #                 "workspace_${ws}_active" = { string = { text = ws; foreground = "ffaa00ff"; }; };
-      #             #                 "workspace_${ws}_windows == 0" = { string = { text = ws; foreground = "555555ff"; }; };
-      #             #               };
-      #             #             };
-      #             #           };
-      #             #         in
-      #             #         builtins.genList mkWorkspaceRule 9;
-      #             #     };
-      #             #   };
-      #             # }
-
-      #             # app title
-      #             {
-      #               foreign-toplevel.content.map.conditions = {
-      #                 "~activated" = {
-      #                   empty = { };
-      #                 };
-      #                 activated = [
-      #                   {
-      #                     string = {
-      #                       text = "{app-id}";
-      #                       foreground = "d65d0eff";
-      #                     };
-      #                   }
-      #                   {
-      #                     string = {
-      #                       text = ": {title}";
-      #                     };
-      #                   }
-      #                 ];
-      #               };
-      #             }
-      #           ];
-
-      #           right = [
-      #             {
-      #               # network status
-      #               # sometimes network module just disappear for no reason
-      #               network = {
-      #                 poll-interval = 5000;
-      #                 content.map = {
-      #                   default = {
-      #                     empty = { };
-      #                   };
-      #                   conditions = {
-      #                     "state == down" = {
-      #                       string = {
-      #                         text = "";
-      #                         foreground = "ff0000ff";
-      #                       };
-      #                     };
-      #                     "state == up".map = {
-      #                       deco = mkDeco "8f3f71ff";
-      #                       conditions =
-      #                         let
-      #                           mkSymbol = symbol: {
-      #                             string = {
-      #                               text = "${symbol} {ssid}";
-      #                             };
-      #                           };
-      #                         in
-      #                         {
-      #                           "signal >= -50" = mkSymbol "🌣";
-      #                           "signal >= -55" = mkSymbol "🌤";
-      #                           "signal >= -67" = mkSymbol "🌥";
-      #                           "signal >= -70" = mkSymbol "🌦";
-      #                           "signal >= -80" = mkSymbol "🌧";
-      #                         };
-      #                     };
-      #                   };
-      #                 };
-      #               };
-      #             }
-
-      #             # cpu usage
-      #             {
-      #               cpu = {
-      #                 poll-interval = 2000;
-      #                 content.map.conditions."id < 0" = [
-      #                   {
-      #                     string = {
-      #                       text = "💻 {cpu}%";
-      #                       deco = mkDeco "689d6aff";
-      #                     };
-      #                   }
-      #                 ];
-      #               };
-      #             }
-
-      #             # memory
-      #             {
-      #               mem = {
-      #                 content = [
-      #                   {
-      #                     string = {
-      #                       text = " {percent_used}%";
-      #                       deco = mkDeco "b16286ff";
-      #                     };
-      #                   }
-      #                 ];
-      #               };
-      #             }
-
-      #             # battery
-      #             {
-      #               battery = {
-      #                 name = "BAT0";
-      #                 content = [
-      #                   {
-      #                     string = {
-      #                       text = "  {capacity}%";
-      #                       deco = mkDeco "98971aff";
-      #                     };
-      #                   }
-      #                 ];
-      #               };
-      #             }
-
-      #           ];
-      #         };
-      #       };
-      #     };
     };
 
     services = {
