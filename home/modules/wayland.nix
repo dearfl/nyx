@@ -20,6 +20,8 @@
             # maybe we should replace binary paths?
             "$terminal" = "${pkgs.alacritty}/bin/alacritty";
             "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
+            "$screenshot" =
+              "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -";
             "$mod" = "SUPER";
 
             exec-once = [
@@ -71,7 +73,7 @@
 
             bind = [
               "$mod, Return, exec, $terminal"
-              "$mod, S, exec, ${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -"
+              "$mod, S, exec, $screenshot"
               "$mod, P, exec, $menu"
               "$mod, Q, killactive"
               "$mod, Space, togglefloating"
