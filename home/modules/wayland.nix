@@ -85,8 +85,8 @@
               "$mod, A, layoutmsg, swapwithmaster"
               "$mod, R, layoutmsg, orientationright"
               # not working
-              "$mod, H, layoutmsg, mfact, -0.2"
-              "$mod, L, layoutmsg, mfact, +0.2"
+              # "$mod, H, layoutmsg, mfact, -0.2"
+              # "$mod, L, layoutmsg, mfact, +0.2"
               "$mod SHIFT, Q, exit"
               "$mod, M, togglespecialworkspace, magic"
               "$mod SHIFT, M, movetoworkspace, special:magic"
