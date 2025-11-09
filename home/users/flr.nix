@@ -8,11 +8,11 @@ _: {
 
     ../modules/alacritty.nix
     ../modules/cursor.nix
-    ../modules/wpaperd.nix
     ../modules/copyq.nix
-    ../modules/wayland.nix
     ../modules/qutebrowser.nix
     ../modules/dunst.nix
     ../modules/fcitx5.nix
+
+    ../modules/wayland.nix
   ];
 }

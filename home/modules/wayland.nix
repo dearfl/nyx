@@ -4,6 +4,7 @@ _: {
     ./hyprland.nix
     ./hyprlock.nix
     ./hypridle.nix
+    ./wpaperd.nix
   ];
   config = {
     programs = {
