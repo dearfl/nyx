@@ -22,7 +22,6 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       nixos-hardware,
       disko,
