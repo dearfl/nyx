@@ -69,6 +69,9 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   # we are actually 8th gen, but it should be ok?
                   nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
@@ -94,6 +97,9 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   nixos-hardware.nixosModules.common-cpu-amd
                   nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -120,6 +126,9 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   nixos-hardware.nixosModules.common-cpu-intel
                   nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -144,6 +153,9 @@
               nixpkgs.lib.nixosSystem {
                 inherit system;
 
+                specialArgs = {
+                  inherit inputs;
+                };
                 modules = [
                   disko.nixosModules.disko
 
@@ -167,7 +179,7 @@
                 inherit system;
 
                 specialArgs = {
-                  inherit nixos-raspberrypi;
+                  inherit inputs nixos-raspberrypi;
                 };
                 modules = [
                   disko.nixosModules.disko
