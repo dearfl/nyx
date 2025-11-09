@@ -90,6 +90,8 @@
               "$mod SHIFT, Q, exit"
               "$mod, M, togglespecialworkspace, magic"
               "$mod SHIFT, M, movetoworkspace, special:magic"
+              "$mod SHIFT, comma, movecurrentworkspacetomonitor, l"
+              "$mod SHIFT, period, movecurrentworkspacetomonitor, r"
             ]
             ++ (
               # workspaces
