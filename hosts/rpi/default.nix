@@ -8,6 +8,7 @@ _: {
 
     ../optional/nix-mirror.nix
 
+    ../optional/transmission.nix
     ../optional/static-web-server.nix
 
     ../optional/rpi.nix
