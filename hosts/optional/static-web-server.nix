@@ -4,11 +4,7 @@ _: {
       enable = true;
       root = "/data";
       listen = "[::]:80";
-      configuration = {
-        general = {
-          directory-listing = true;
-        };
-      };
+      configuration.general.directory-listing = true;
     };
   };
 }

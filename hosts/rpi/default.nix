@@ -9,6 +9,8 @@ _: {
     # ../optional/wifi.nix
     # ../optional/nix-mirror.nix
 
+    ../optional/static-web-server.nix
+
     ../optional/rpi.nix
   ];
 
