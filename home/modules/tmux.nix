@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   config = {
     programs.tmux = {
       enable = true;
-      shell = "${pkgs.fish}/bin/fish";
+      shell = lib.getExe pkgs.fish;
       baseIndex = 1;
       keyMode = "vi";
       prefix = "C-a";

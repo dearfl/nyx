@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   config = {
     wayland.windowManager.hyprland = {
@@ -15,15 +15,15 @@
         ];
 
         # maybe we should replace binary paths?
-        "$terminal" = "${pkgs.alacritty}/bin/alacritty";
-        "$menu" = "${pkgs.wofi}/bin/wofi --show drun";
+        "$terminal" = lib.getExe pkgs.alacritty;
+        "$menu" = "${lib.getExe pkgs.wofi} --show drun";
         "$screenshot" =
-          "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - | ${pkgs.swappy}/bin/swappy -f -";
+          "${lib.getExe pkgs.slurp} | ${lib.getExe pkgs.grim} -g - | ${lib.getExe pkgs.swappy} -f -";
         "$mod" = "SUPER";
 
         exec-once = [
-          # "${pkgs.waybar}/bin/waybar"
-          # "${pkgs.copyq}/bin/copyq"
+          # (lib.getExe pkgs.waybar)
+          # (lib.getExe pkgs.copyq)
         ];
 
         # laptop keyboard, we want norman layout
