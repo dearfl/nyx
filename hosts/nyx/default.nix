@@ -3,6 +3,8 @@ _: {
     ./disko.nix
     ./hardware.nix
 
+    ../optional/emulation.nix
+
     ../laptop
   ];
 
