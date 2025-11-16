@@ -8,6 +8,7 @@ _: {
         editor = {
           soft-wrap.enable = true;
           line-number = "relative";
+          rulers = [ 80 ];
           lsp = {
             display-messages = true;
             display-inlay-hints = true;
@@ -81,7 +82,6 @@ _: {
         language-server = {
           rust-analyzer.config = {
             checkOnSave.command = "clippy";
-            cargo.allFeatures = false;
             inlayHints = {
               bindingModeHints.enable = true;
               closingBraceHints.minLines = 10;
