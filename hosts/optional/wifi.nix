@@ -12,6 +12,10 @@ _: {
         pskRaw = "513ce170f82b9f9bba9a5a9ddc5db9a62a26903dc9eaed7e9059502c6169440a";
         priority = 1000;
       };
+      networks."Tenda_E43EF0" = {
+        pskRaw = "77cb629bde791522516e80e347e10206c33d46524b9e7cd5e2f9e68ace219aaf";
+        priority = 999;
+      };
     };
   };
 }
