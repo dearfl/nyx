@@ -7,6 +7,7 @@ _: {
 
     ../optional/bluetooth.nix
     ../optional/touchpad.nix
+    ../optional/tlp.nix
 
     ../optional/chromium.nix
 
